@@ -79,7 +79,7 @@ $db['default'] = array(
 	'username' => 'root',
 	'password' => 'hashbr0wn',
 	'database' => 'admuewallet',
-	'dbdriver' => 'mysqli',
+	'dbdriver' => 'mysql',
 	'dbprefix' => '',
 	'pconnect' => TRUE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
