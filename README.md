@@ -1,5 +1,6 @@
 # admu-ewallet-db
-Server DB for the AdMU E-Wallet built using a RESTful CI framework
+Serverside DB of the AdMU E-Wallet
 
-Code Igniter: https://codeigniter.com
-CI w/REST: https://github.com/chriskacerguis/codeigniter-restserver
+Framework/s used:
+* Code Igniter: https://codeigniter.com
+* CI w/REST: https://github.com/chriskacerguis/codeigniter-restserver
