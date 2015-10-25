@@ -31,7 +31,7 @@
             $new_balance = floatval($new_balance);
             if ($id_num>0 && $new_balance>0) {
                 $query = $this->db->query("UPDATE user SET balance='{$new_balance}' WHERE ID_Number = '{$id_num}'");
-                $ret = 'OK';
+                $ret = $this->db->query("SELECT balance FROM user WHERE ID_Number = '{$id_num}'")->row();
             } else {
                 $ret = 'FUCK';
             }
