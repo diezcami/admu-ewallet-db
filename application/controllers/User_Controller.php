@@ -18,25 +18,33 @@ require APPPATH . '/libraries/REST_Controller.php';
  */
 class User_controller extends REST_Controller {
 
+/*
    function user_get() {
         $id_num = $this->get('id_num');
         $this->load->model('User_Model');
         $data = $this->User_Model->getUser($id_num);
         $this->response($data, 404);
    }
-/*
+
    function balance_get() {
         $id_num = $this->get('id_num');
         $this->load->model('User_Model');
         $data = $this->User_Model->getBalance($id_num);
         $this->response($data, 404);
-   }*/
+   }
+*/
 
    function balance_post() {
         $id_num = $this->post('id_num');
+        $new_balance = $this->post('new_balance');
         $this->load->model('User_Model');
-        $data = $this->User_Model->setBalance($id_num, $new_balance);
+        if ($new_balance !== NULL) {
+          $data = $this->User_Model->setBalance($id_num, $new_balance);
+        } else {
+          $data = $this->User_Model->getBalance($id_num);
+        }
         $this->response($data, 404);
    }
 }
+
 

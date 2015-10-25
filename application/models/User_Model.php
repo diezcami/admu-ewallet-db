@@ -28,12 +28,15 @@
         }
 
         function setBalance($id_num, $new_balance) {
-            $query = $this->db->query("SET balance='{$new_balance}' WHERE ID_Number = '{$id_num}'");
-             if($query->num_rows() > 0) {
-                return 'OK';
+            $new_balance = floatval($new_balance);
+            if ($id_num>0 && $new_balance>0) {
+                $query = $this->db->query("UPDATE user SET balance='{$new_balance}' WHERE ID_Number = '{$id_num}'");
+                $ret = $this->db->query("SELECT balance FROM user WHERE ID_Number = '{$id_num}'")->row();
             } else {
-                return 'FUCK';
-            }           
+                $ret = 'FUCK';
+            }
+
+            return $ret;
         }      
     }
 
