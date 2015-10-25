@@ -34,6 +34,7 @@ class User_controller extends REST_Controller {
 
    function balance_post() {
         $id_num = $this->post('id_num');
+        $new_balance = $this->post('new_balance');
         $this->load->model('User_Model');
         $data = $this->User_Model->setBalance($id_num, $new_balance);
         $this->response($data, 404);
