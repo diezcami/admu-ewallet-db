@@ -24,11 +24,19 @@ class User_controller extends REST_Controller {
         $data = $this->User_Model->getUser($id_num);
         $this->response($data, 404);
    }
-
+/*
    function balance_get() {
         $id_num = $this->get('id_num');
         $this->load->model('User_Model');
         $data = $this->User_Model->getBalance($id_num);
         $this->response($data, 404);
+   }*/
+
+   function balance_post() {
+        $id_num = $this->post('id_num');
+        $this->load->model('User_Model');
+        $data = $this->User_Model->setBalance($id_num, $new_balance);
+        $this->response($data, 404);
    }
 }
+

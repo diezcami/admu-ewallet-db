@@ -25,7 +25,16 @@
             }
 
             return $ret;
-        }               
+        }
+
+        function setBalance($id_num, $new_balance) {
+            $query = $this->db->query("SET balance='{$new_balance}' WHERE ID_Number = '{$id_num}'");
+             if($query->num_rows() > 0) {
+                return 'OK';
+            } else {
+                return 'FUCK';
+            }           
+        }      
     }
 
 ?>
