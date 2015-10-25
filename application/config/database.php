@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '188.166.253.236',
+	'hostname' => 'localhost',
 	'username' => 'root',
-	'password' => '',
+	'password' => 'hashbr0wn',
 	'database' => 'admuewallet',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
