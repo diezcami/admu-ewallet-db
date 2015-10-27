@@ -16,7 +16,7 @@ require APPPATH . '/libraries/REST_Controller.php';
  * @license         MIT
  * @link            https://github.com/chriskacerguis/codeigniter-restserver
  */
-class User_controller extends REST_Controller {
+class User_Controller extends REST_Controller {
 
 /*
    function user_get() {
