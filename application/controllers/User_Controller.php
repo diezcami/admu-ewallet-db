@@ -35,7 +35,7 @@ class User_Controller extends REST_Controller {
 */
 
    function balance_post() {
-        $id_num = $this->post('id_num');
+        $id_number = $this->post('id_num');
         $new_balance = $this->post('new_balance');
         $this->load->model('User_Model');
         if ($new_balance !== NULL) {
@@ -44,7 +44,6 @@ class User_Controller extends REST_Controller {
           $data = $this->User_Model->getBalance($id_num);
         }
         $this->response($data, 404);
-        echo $this->response($data, 404);
    }
 }
 
