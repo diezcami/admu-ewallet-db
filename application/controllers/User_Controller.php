@@ -15,6 +15,7 @@ require APPPATH . '/libraries/REST_Controller.php';
  */
 class User_controller extends REST_Controller {
 /*
+   // GET Methods: For reference only
    function user_get() {
         $id_num = $this->get('id_num');
         $this->load->model('User_Model');
@@ -28,15 +29,35 @@ class User_controller extends REST_Controller {
         $this->response($data, 404);
    }
 */
+
+   /**
+    * This method returns or updates the balance of a user
+    *
+    * @post_params: id_number, [new_balance]
+    * @output: JSON of user's balance
+    */
    function balance_post() {
         $id_number = $this->post('id_number');
         $new_balance = $this->post('new_balance');
         $this->load->model('User_Model');
         if ($new_balance !== NULL) {
-          $data = $this->User_Model->setBalance($id_number, $new_balance);
+          $data = $this->User_Model->set_balance($id_number, $new_balance);
         } else {
-          $data = $this->User_Model->getBalance($id_number);
+          $data = $this->User_Model->get_balance($id_number);
         }
+        $this->response($data, 404);
+   }
+
+   /**
+    * This method returns a single user
+    *
+    * @post_params: id_number
+    * @output: JSON of user
+    */
+   function user_post() {
+        $id_number = $this->post('id_number');
+        $this->load->model('User_Model');
+        $data = $this->User_Model->get_user($id_number);
         $this->response($data, 404);
    }
 }
