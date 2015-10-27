@@ -1,10 +1,7 @@
 <?php
-
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 // This can be removed if you use __autoload() in config.php OR use Modular Extensions
 require APPPATH . '/libraries/REST_Controller.php';
-
 /**)
  * This is an example of a few basic user interaction methods you could use
  * all done with a hardcoded array
@@ -16,8 +13,7 @@ require APPPATH . '/libraries/REST_Controller.php';
  * @license         MIT
  * @link            https://github.com/chriskacerguis/codeigniter-restserver
  */
-class User_Controller extends REST_Controller {
-
+class User_controller extends REST_Controller {
 /*
    function user_get() {
         $id_num = $this->get('id_num');
@@ -25,7 +21,6 @@ class User_Controller extends REST_Controller {
         $data = $this->User_Model->getUser($id_num);
         $this->response($data, 404);
    }
-
    function balance_get() {
         $id_num = $this->get('id_num');
         $this->load->model('User_Model');
@@ -33,18 +28,15 @@ class User_Controller extends REST_Controller {
         $this->response($data, 404);
    }
 */
-
    function balance_post() {
-        $id_number = $this->post('id_num');
+        $id_number = $this->post('id_number');
         $new_balance = $this->post('new_balance');
         $this->load->model('User_Model');
         if ($new_balance !== NULL) {
-          $data = $this->User_Model->setBalance($id_num, $new_balance);
+          $data = $this->User_Model->setBalance($id_number, $new_balance);
         } else {
-          $data = $this->User_Model->getBalance($id_num);
+          $data = $this->User_Model->getBalance($id_number);
         }
         $this->response($data, 404);
    }
 }
-
-
