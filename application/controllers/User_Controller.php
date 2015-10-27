@@ -44,6 +44,7 @@ class User_controller extends REST_Controller {
           $data = $this->User_Model->getBalance($id_num);
         }
         $this->response($data, 404);
+        echo $this->response($data, 404);
    }
 }
 
