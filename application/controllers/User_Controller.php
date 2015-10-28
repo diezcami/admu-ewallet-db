@@ -33,7 +33,11 @@ class User_controller extends REST_Controller {
         $this->response($data, 404);
    }
 */
-   function user_post(){
+
+   /*
+      gets all the users
+   */
+   function users_post(){
 
     $this->load->model('User_Model');
     $data = $this->User_Model->getUsers();

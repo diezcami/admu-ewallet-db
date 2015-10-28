@@ -38,7 +38,9 @@
 
             return $ret;
         }
-
+        /*
+        returns all the users
+        */
         function getUsers(){
             $query = $this->db->query("SELECT * from user");
             if( $query->num_rows()>0 ){
