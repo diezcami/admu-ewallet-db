@@ -49,15 +49,16 @@ class User_controller extends REST_Controller {
    }
 
    /**
-    * This method returns a single user
+    * This method returns all users
+    * TODO: Use last_updated_TS
     *
-    * @post_params: id_number
-    * @output: JSON of user
+    * @post_params: none
+    * @output: JSON containing users
     */
-   function user_post() {
-        $id_number = $this->post('id_number');
+   function users_post() {
+        // $id_number = $this->post('id_number'); 
         $this->load->model('User_Model');
-        $data = $this->User_Model->get_user($id_number);
+        $data = $this->User_Model->get_users();
         $this->response($data, 404);
    }
 }

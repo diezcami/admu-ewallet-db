@@ -3,15 +3,15 @@
         
         /**
          * Error Descriptions:
-         * 200: No Item ID found in Server DB
+         * 200: No items were found in the Server
          */
         
         function __construct() {
             parent::__construct();
         }
 
-        function get_item($item_id) {
-            $query = $this->db->query("SELECT * FROM item WHERE Item_ID = '{$item_id}'");
+        function get_items() {
+            $query = $this->db->query("SELECT * FROM item");
             if($query->num_rows() > 0) {
                 $ret = $query->row();
             } else {
