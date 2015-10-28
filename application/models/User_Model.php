@@ -3,19 +3,20 @@
 
         /**
          * Error Descriptions:
-         * 100: No ID Number found in Server DB
+         * 100: No ID Number found in the Server
+         * 300: No users were found in the Server
          */
         
         function __construct() {
             parent::__construct();
         }
 
-        function get_user($id_number) {
-            $query = $this->db->query("SELECT * FROM user WHERE ID_Number = '{$id_number}'");
+        function get_users() {
+            $query = $this->db->query("SELECT * FROM user");
             if($query->num_rows() > 0) {
-                $ret = $query->row();
+                $ret = $query;
             } else {
-                $ret = '100';
+                $ret = '300';
             }
 
             return $ret;

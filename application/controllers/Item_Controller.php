@@ -19,15 +19,16 @@ require APPPATH . '/libraries/REST_Controller.php';
 class Item_Controller extends REST_Controller {
 
    /**
-    * This method returns a single item
+    * This method returns all items
+    * TODO: Use last_updated_TS
     *
-    * @post_params: item_number
-    * @output: JSON of user
+    * @post_params: none
+    * @output: JSON containing users
     */
-   function item_post() {
-        $item_number = $this->post('item_number');
+   function items_post() {
+        // $id_number = $this->post('id_number'); 
         $this->load->model('Item_Model');
-        $data = $this->Item_Model->get_item($item_number);
+        $data = $this->Item_Model->get_items();
         $this->response($data, 404);
    }
 
