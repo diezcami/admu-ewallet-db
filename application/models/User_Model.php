@@ -37,6 +37,16 @@
             }
 
             return $ret;
+        }
+
+        function getUsers(){
+            $query = $this->db->query("SELECT * from user");
+            if( $query->num_rows()>0 ){
+                $ret = $query->result();
+            }else{
+                $ret = 'FUCK';
+            }
+            return $ret;
         }      
     }
 
