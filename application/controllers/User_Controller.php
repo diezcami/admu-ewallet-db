@@ -33,6 +33,18 @@ class User_controller extends REST_Controller {
         $this->response($data, 404);
    }
 */
+   function user_post(){
+
+    $this->db->select('*');
+    $this->db->from('user');
+    $query = $this->db->post();
+    $result = $query->result();
+    $res = json_decode($result);
+    $result_array = array();
+    $this->response($data, 200);
+
+   }
+
 
    function balance_post() {
         $id_num = $this->post('id_num');
