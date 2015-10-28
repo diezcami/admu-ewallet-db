@@ -11,17 +11,6 @@
             parent::__construct();
         }
 
-        function get_users() {
-            $query = $this->db->query("SELECT * FROM user");
-            if($query->num_rows() > 0) {
-                $ret = $query;
-            } else {
-                $ret = '300';
-            }
-
-            return $ret;
-        }
-
         function get_balance($id_number) {
             $query = $this->db->query("SELECT balance FROM user WHERE ID_Number = '{$id_number}'");
             if($query->num_rows() > 0) {
@@ -40,6 +29,17 @@
                 $ret = $this->db->query("SELECT balance FROM user WHERE ID_Number = '{$id_number}'")->row();
             } else {
                 $ret = '100';
+            }
+
+            return $ret;
+        }
+
+        function get_users(){
+            $query = $this->db->query ("SELECT * FROM user");
+            if($query->num_rows() > 0) {
+                $ret = $query->result();
+            } else {
+                $ret = '300';
             }
 
             return $ret;
