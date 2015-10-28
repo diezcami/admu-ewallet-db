@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 require APPPATH . '/libraries/REST_Controller.php';
 
-class User_controller extends REST_Controller {
+class User_Controller extends REST_Controller {
 
    /**
     * This method returns all users
@@ -12,10 +12,9 @@ class User_controller extends REST_Controller {
     * @output: JSON containing users
     */
    function users_post(){
-
-    $this->load->model('User_Model');
-    $data = $this->User_Model->get_users();
-    $this->response($data, 200);
+        $this->load->model('User_Model');
+        $data = $this->User_Model->get_users();
+        $this->response($data, 300);
    }
 
    /**
@@ -33,6 +32,6 @@ class User_controller extends REST_Controller {
         } else {
           $data = $this->User_Model->get_balance($id_number);
         }
-        $this->response($data, 404);
+        $this->response($data, 100);
    }
 }
