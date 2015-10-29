@@ -15,6 +15,6 @@ class Item_Controller extends REST_Controller {
 
     $this->load->model('Item_Model');
     $data = $this->Item_Model->get_items();
-    $this->response($data, 200);
+    $this->response($data, 404);
    }
 }

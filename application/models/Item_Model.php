@@ -9,7 +9,6 @@
         function __construct() {
             parent::__construct();
         }
-
         function get_items() {
             $query = $this->db->query("SELECT * FROM item");
             if($query->num_rows() > 0) {
@@ -17,10 +16,8 @@
             } else {
                 $ret = '200';
             }
-
             return $ret;
         }
           
     }
-
 ?>
