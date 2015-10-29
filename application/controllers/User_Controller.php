@@ -14,7 +14,7 @@ class User_Controller extends REST_Controller {
    function users_post(){
         $this->load->model('User_Model');
         $data = $this->User_Model->get_users();
-        $this->response($data, 300);
+        $this->response($data, 404);
    }
 
    /**
@@ -32,6 +32,6 @@ class User_Controller extends REST_Controller {
         } else {
           $data = $this->User_Model->get_balance($id_number);
         }
-        $this->response($data, 100);
+        $this->response($data, 404);
    }
 }

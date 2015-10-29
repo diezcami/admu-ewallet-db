@@ -15,7 +15,7 @@ class Buy_Transaction_Controller extends REST_Controller {
         $params = json_decode($temp, TRUE);
         $this->load->model('Buy_Transaction_Model');
         $data = $this->Buy_Transaction_Model->sync_buy_transactions($params["buy_transaction_ts"], $params["id_number"], $params["shop_terminal_id"]);
-        $this->response($data, 200);
+        $this->response($data, 404);
         echo params;
    }
 }
