@@ -13,7 +13,7 @@
         function get_items() {
             $query = $this->db->query("SELECT * FROM item");
             if($query->num_rows() > 0) {
-                $ret = $query->row();
+                $ret = $query->results();
             } else {
                 $ret = '200';
             }
