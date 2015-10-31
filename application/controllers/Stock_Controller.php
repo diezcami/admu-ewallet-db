@@ -13,7 +13,12 @@ class Stock_Controller extends REST_Controller {
    function sync_post() {
         $params = $this->input->post('params');
         $params = substr ($params, 1, -1);
-        $parsable = explode ('},', $params);
+        
+        if( strpos($params, "},")  || strpos($params, "},")==0 ){
+            $parsable = explode ('},', $params);
+        }else{
+            $parsable = array($params);
+        }
 
         $this->load->model('Stock_Model');
 

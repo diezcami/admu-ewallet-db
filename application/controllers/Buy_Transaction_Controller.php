@@ -13,7 +13,12 @@ class Buy_Transaction_Controller extends REST_Controller {
    function sync_post() {
         $params = $this->input->post('params');
         $params = substr ($params, 1, -1);
-        $parsable = explode ('},', $params);
+
+        if( strpos($params, "},")  || strpos($params, "},")==0 ){
+            $parsable = explode ('},', $params);
+        }else{
+            $parsable = array($params);
+        }
 
         $this->load->model('Buy_Transaction_Model');
 
@@ -26,27 +31,3 @@ class Buy_Transaction_Controller extends REST_Controller {
 
         $this->response($parsable, 404);
    }
-
-
-/*
-{"shop_terminal_id":"001","item_id":001,"stock_ts:"2095-10-27 19:23:42"},
-{"shop_terminal_id":001,"item_id":002,"stock_ts:"2095-10-27 13:16:21"}]
-
- */
-
-/*
-   function sync_post() {
-        $params = $this->input->post('params');
-        $params = json_decode($params, true);
-
-        $this->load->model('Buy_Transaction_Model');
-
-        foreach($params as $item) {
-            $this->Buy_Transaction_Model->sync_buy_transactions($item['buy_transaction_ts'], $item['id_number'], $item['shop_terminal_id']);
-        }
-        
-        $this->response($params, 404);
-   }*/
-}
-
-
