@@ -20,7 +20,7 @@ class Buy_Transaction_Controller extends REST_Controller {
         foreach($parsable as $item) {
             $buy_transaction_ts = substr ($item, 23, 19);
             $id_number = substr ($item, 56, 6);
-            $shop_terminal_id = substr ($item, 82, 3);
+            $shop_terminal_id = substr ($item, 83, 3);
             $this->Buy_Transaction_Model->sync_buy_transactions($buy_transaction_ts, $id_number, $shop_terminal_id);
         }
 
@@ -29,7 +29,7 @@ class Buy_Transaction_Controller extends REST_Controller {
 
 
 /*
-{"shop_terminal_id":001,"item_id":001,"stock_ts:"2095-10-27 19:23:42"},
+{"shop_terminal_id":"001","item_id":001,"stock_ts:"2095-10-27 19:23:42"},
 {"shop_terminal_id":001,"item_id":002,"stock_ts:"2095-10-27 13:16:21"}]
 
  */
