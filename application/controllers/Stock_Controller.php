@@ -3,7 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require APPPATH . '/libraries/REST_Controller.php';
 
 class Stock_Controller extends REST_Controller {
-
    /**
     * This method receives a JSON from the Android App containing Stocks
     * Sample JSON (As of 11/1):
@@ -34,10 +33,10 @@ class Stock_Controller extends REST_Controller {
             $shop_terminal_id = substr ($item, 21, 3); 
             $item_id = substr ($item, 36, 3);
             $stock_ts = substr ($item, 52, 19);
-            $quantity = $quantity_parse (substr ($item, 84));
+            $quantity = $this->quantity_parse (substr ($item, 84));
 
             echo $stock_ts;
-            $this->Stock_Model->sync_stocks($shop_terminal_id, $item_id, $stock_ts);
+            $this->Stock_Model->sync_stocks($shop_terminal_id, $item_id, $stock_ts, $quantity);
         }
 
         $this->response($parsable, 404);
@@ -57,7 +56,6 @@ class Stock_Controller extends REST_Controller {
             $json_string = substr ($json_string, 1);
         }
 
-        return $quantity
+        return $quantity;
    }
-
 }

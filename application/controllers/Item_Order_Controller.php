@@ -32,7 +32,7 @@ class Item_Order_Controller extends REST_Controller {
         foreach($parsable as $item) {
             $buy_transaction_id = substr ($item, 22, 2);
             $item_id = substr ($item, 35, 3);
-            $quantity = quantity_parse(substr ($item, 50);
+            $quantity = $this->quantity_parse(substr ($item, 50);
             $this->Item_Order_Model->sync_items($buy_transaction_id, $item_id, $quantity);
         }
 
@@ -53,6 +53,6 @@ class Item_Order_Controller extends REST_Controller {
             $json_string = substr ($json_string, 1);
         }
 
-        return $quantity
+        return $quantity;
    }
 }
