@@ -52,7 +52,7 @@ class Stock_Controller extends REST_Controller {
    function quantity_parse ($json_string) {
         $quantity = 0;
         while (strlen($json_string)>0 && $json_string != '}') {
-            $quantity += $json_string[0];
+            $quantity .= $json_string[0];
             $json_string = substr ($json_string, 1);
         }
 
