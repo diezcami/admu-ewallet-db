@@ -7,11 +7,9 @@ class Item_Order_Controller extends REST_Controller {
    /**
     * This method receives a JSON from the Android App containing Item Orders
     * Sample JSON (11/1, NOT FINAL):
-    * [{"buy_transaction_id":01,"item_id":001,"quantity":3}]
+    * [{"buy_transaction_id":10001,"item_id":101,"quantity":3}]
     *
-    * TODO:
-    *  Fix Buy_Transaction_ID Formatting (2->5)
-    *  Quantity Parsing
+    * PARSING DOES NOT WORK
     *
     * @flow: App->Server
     * @post_params: none
@@ -30,13 +28,13 @@ class Item_Order_Controller extends REST_Controller {
         $this->load->model('Item_Order_Model');
 
         foreach($parsable as $item) {
-            $buy_transaction_id = substr ($item, 22, 2);
-            $item_id = substr ($item, 35, 3);
-            $quantity = $this->quantity_parse(substr ($item, 50);
-            $this->Item_Order_Model->sync_items($buy_transaction_id, $item_id, $quantity);
+            $buy_transaction_id = substr ($item, 22, 5);
+            $item_id = substr ($item, 41, 3);
+            $quantity = $this->quantity_parse(substr ($item, 53));
+            //$this->Item_Order_Model->sync_items($buy_transaction_id, $item_id, $quantity);
         }
 
-        $this->response($parsable, 404);
+        $this->response($params, 404);
    }
 
    /**
