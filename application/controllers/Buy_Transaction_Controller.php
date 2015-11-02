@@ -9,6 +9,8 @@ class Buy_Transaction_Controller extends REST_Controller {
     * Sample JSON (As of 11/2):
     * [{"buy_transaction_id":10001,"buy_transaction_ts":"2015-11-02 20:27:46","id_number":131356,"shop_terminal_id":"001"}]
     *
+    * WORKING BUILD
+    * 
     * @flow: App->Server
     * @post_params: none
     * @output: Outputs decoded JSON array to Model
