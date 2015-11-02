@@ -8,6 +8,9 @@ class Item_Controller extends REST_Controller {
     * This method returns all items
     * TODO: Use last_updated_TS
     *
+    * WORKING BUILD
+    *
+    * @flow: Server->App
     * @post_params: none
     * @output: JSON containing users
     */
