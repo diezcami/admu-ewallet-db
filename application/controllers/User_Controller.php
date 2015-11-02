@@ -6,7 +6,7 @@ class User_Controller extends REST_Controller {
 
    /**
     * This method returns all users
-    * TODO: Use last_updated_TS
+    * MAGIS TODO: Use last_updated_TS
     *
     * WORKING BUILD
     *
