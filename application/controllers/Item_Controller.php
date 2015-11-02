@@ -6,7 +6,7 @@ class Item_Controller extends REST_Controller {
 
    /**
     * This method returns all items
-    * TODO: Use last_updated_TS
+    * MAGIS TODO: Use last_updated_TS
     *
     * WORKING BUILD
     *
