@@ -8,10 +8,7 @@ class Stock_Controller extends REST_Controller {
     * Sample JSON (As of 11/1):
     * [{"shop_terminal_id":"001","item_id":101,"stock_ts":"2015-11-01 17:29:00","quantity":100}]
     *
-    * TODO:
-    *  String Shop_Terminal_ID Parsing
-    *  Remove Stock_TS
-    *  Quantity Parsing
+    * WORKING BUILD
     *
     * @flow: App->Server
     * @post_params: none
