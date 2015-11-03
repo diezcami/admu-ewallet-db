@@ -26,21 +26,4 @@ class Stock_Controller extends REST_Controller {
 
         $this->response($temp, 404);
    }
-
-   /**
-    * Determines the quantity passed in a JSON string.
-    * Assumptions include the quantity being passed last, though it's easily tweakable if otherwise required.
-    * 
-    * @param  [string] A substring of the received JSON input 
-    * @return [int] The actual quantity perscribed in the given JSON string
-    */
-   function quantity_parse ($json_string) {
-        $quantity = 0;
-        while (strlen($json_string)>0 && $json_string != '}') {
-            $quantity += $json_string[0];
-            $json_string = substr ($json_string, 1);
-        }
-
-        return $quantity;
-   }
 }
