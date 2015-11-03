@@ -3,13 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require APPPATH . '/libraries/REST_Controller.php';
 
 class Buy_Transaction_Controller extends REST_Controller {
-
    /**
     * This method receives a JSON from the Android App containing Buy Transactions
     * Sample JSON (As of 11/2):
     * [{"buy_transaction_id":10001,"buy_transaction_ts":"2015-11-02 20:27:46","id_number":131356,"shop_terminal_id":"001"}]
     *
-    * SUPPOSEDLY WORKING BUILD
+    * WORKING BUILD
     * 
     * @flow: App->Server
     * @post_params: none
