@@ -18,28 +18,16 @@ class Stock_Controller extends REST_Controller {
     * @output: Outputs decoded JSON array to Model
     */
    function sync_post() {
-        $params = $this->input->post('params');
-        $params = substr ($params, 1, -1);
-        
-        if ( strpos($params, "},")  || strpos($params, "},")==0 ){
-            $parsable = explode ('},', $params);
-        } else {
-            $parsable = array($params);
-        }
-
+        $temp = file_get_contents('php://input');
+        $temp = substr($temp, 7);
+        $params = json_decode($temp, TRUE);
         $this->load->model('Stock_Model');
 
-        foreach($parsable as $item) {
-            $shop_terminal_id = substr ($item, 21, 3); 
-            $item_id = substr ($item, 36, 3);
-            $stock_ts = substr ($item, 52, 19);
-            $quantity = $this->quantity_parse (substr ($item, 84));
-
-            echo $stock_ts;
-            $this->Stock_Model->sync_stocks($shop_terminal_id, $item_id, $stock_ts, $quantity);
+        for( $i = 0; $i < count($params); $i++ ){
+            $temp = $this->Stock_Model->sync_stocks($params[$i]['shop_terminal_id'], $params[$i]['item_id'], $params[$i]['stock_ts'], $params[$i]['quantity']);
         }
 
-        $this->response($parsable, 404);
+        $this->response($temp, 404);
    }
 
    /**
@@ -52,7 +40,7 @@ class Stock_Controller extends REST_Controller {
    function quantity_parse ($json_string) {
         $quantity = 0;
         while (strlen($json_string)>0 && $json_string != '}') {
-            $quantity .= $json_string[0];
+            $quantity += $json_string[0];
             $json_string = substr ($json_string, 1);
         }
 
