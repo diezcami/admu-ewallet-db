@@ -12,7 +12,15 @@
                     //'stock_ts' => $stock_ts,
                     'quantity' => $quantity
                 );
-            $this->db->insert('stock', $data);
+
+            $query = $this->db->query ("SELECT * FROM stock WHERE shop_terminal_id = '{$shop_terminal_id}' AND item_id = '{$item_id}' " );
+            if ($query->num_rows() == 1 ) {
+                $this->db->query( "UPDATE stock SET quantity = '{$quantity}' WHERE item_id = '{$item_id}' AND '{$shop_terminal_id}'");
+            } elseif ( $query->num_rows() == 0 ) {
+                $this->db->query( "INSERT INTO stock (shop_terminal_id, item_id, quantity) VALUES ( '{$shop_terminal_id}', '{$item_id}', '{$quantity}' )");
+            } else {
+                return " Sync failed ";
+            }
 
             return "Sync Successful";
         }   
