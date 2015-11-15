@@ -11,7 +11,7 @@
           <tr>
             <th>Load Terminal ID</th>           
             <th>PIN</th>
-            <th style="text-align:center;">Details</th>
+            <th style="text-align:center;">Edit</th>
             <th style="text-align:center;">View Transactions</th>
           </tr>
         </thead>

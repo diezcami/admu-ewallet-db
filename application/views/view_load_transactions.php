@@ -17,7 +17,6 @@
             <th>Amount Loaded</th>
             <th>Timestamp</th>
             <th>ID Number</th>
-            <th style="text-align:center;"> </th>
           </tr>
         </thead>
 

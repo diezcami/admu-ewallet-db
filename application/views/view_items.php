@@ -12,7 +12,9 @@
             <th>Item Number</th>           
             <th>Name</th>
             <th>Price</th>
-            <th style="text-align:center;">Details</th>
+            <th style="text-align:center;">Edit</th>
+            <th style="text-align:center;">View Stocks</th>
+
           </tr>
         </thead>
         
@@ -23,6 +25,7 @@
             echo "<td>".$item->item_name."</td>";
             echo "<td>".$item->item_price."</td>";
             echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='edit_item/$item->item_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
+            echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='item_stocks/$item->item_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
             echo"</tr>";
           }
         ?>
