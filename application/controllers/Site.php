@@ -52,7 +52,7 @@ class Site extends CI_Controller {
 		$this->view($this->nav[3][2]);
 	}
 	public function edit_user( $id_number ){
-		$data = array('id_number' => $id_number);
+		$data['users'] = $this->User_Model->get_user($id_number);
 		$this->view('view_edit_user', $data);
 	}
 }

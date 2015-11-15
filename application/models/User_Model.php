@@ -43,7 +43,17 @@
             }
 
             return $ret;
-        }      
+        }
+        function get_user($id_number){
+            $query = $this->db->query ("SELECT * FROM user WHERE id_number = '{$id_number}'");
+            if($query->num_rows() > 0) {
+                $ret = $query->result();
+            } else {
+                $ret = '300';
+            }
+
+            return $ret;
+        } 
     }
 
 ?>
