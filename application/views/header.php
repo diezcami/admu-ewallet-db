@@ -12,6 +12,7 @@ if($isWelcome==true){
 		$this->load->helper('url')
 	?>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url("css/bootstrap.css")?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url("css/style.css")?>">
 	<title>AdMU E-Wallet</title>
 </head>
 <!--<body style="background-image: url('<?php# echo base_url("assets/congruent_outline.png")?>');">-->
