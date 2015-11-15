@@ -24,6 +24,11 @@
             return "Sync Successful";
         }   
 
+        function add_stock ($shop_terminal_id, $item_id, $quantity) {        
+            $this->db->query( "INSERT INTO item (shop_terminal_id, item_id, quantity) VALUES ( '{$shop_terminal_id}', '{$item_id}', '{$quantity}' )");
+            return "Ok";
+        } 
+
         function get_stocks_per_item($item_id){
             $query = $this->db->query ("SELECT * FROM stock WHERE item_id = '{$item_id}'");
             if($query->num_rows() > 0) {

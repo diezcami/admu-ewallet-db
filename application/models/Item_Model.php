@@ -32,17 +32,10 @@
             return "Sync Successful";
         }   
 
-        function add_item ($item_name, $item_price) {
-             $data = array(
-                    'item_name' => $item_name,
-                    'item_price' => $item_price
-                );           
+        function add_item ($item_name, $item_price) {        
             $this->db->query( "INSERT INTO item (item_name, item_price) VALUES ( '{$item_name}', '{$item_price}' )");
-
             return "Ok";
-
         }
-        
 
         function get_items() {
             $query = $this->db->query("SELECT * FROM item");

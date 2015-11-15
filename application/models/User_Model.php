@@ -34,6 +34,12 @@
             return $ret;
         }
 
+        function add_user ($id_number, $name, $pin, $balance) {
+             $names = explode ('\ ', $name);      
+            $this->db->query( "INSERT INTO user (id_number, first_name, last_name, pin, balance) VALUES ( '{$id_number}', '{$name[0]}', '{$name[1]}', '{$pin}', '{$balance}' )");
+            return "Ok";
+        }
+
         function get_users(){
             $query = $this->db->query ("SELECT * FROM user");
             if($query->num_rows() > 0) {
