@@ -14,6 +14,8 @@ class Site extends CI_Controller {
 		$this->load->model('Load_Transaction_Model');
 		$this->load->model('Buy_Transaction_Model');
 		$this->load->model('Item_Model');
+		$this->load->model('Stock_Model');
+
 		# New pages must be declared in this array to include them in the nav bar.
 		# array('Page Name', 'url', 'view name*' )
 		# *the view that will be loaded.
@@ -75,7 +77,7 @@ class Site extends CI_Controller {
 	}
 	public function shop_terminal_stocks( $shop_terminal_id ){
 		$data['shop_terminal_id'] = $shop_terminal_id;
-		$data['stocks'] = $this->Buy_Transaction_Model->get_stocks_per_terminal($shop_terminal_id);
+		$data['stocks'] = $this->Stock_Model->get_stocks_per_terminal($shop_terminal_id);
 		$this->view('view_shop_terminal_stocks', $data);
 	}
 }

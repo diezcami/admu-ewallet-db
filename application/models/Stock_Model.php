@@ -23,7 +23,6 @@
 
             return "Sync Successful";
         }   
-    }
 
         function get_stocks_per_item($item_number){
             $query = $this->db->query ("SELECT * FROM stock WHERE item_number = '{$item_number}'");
