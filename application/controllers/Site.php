@@ -9,6 +9,9 @@ class Site extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('User_Model');
+		$this->load->model('Shop_Terminal_Model');
+		$this->load->model('Load_Terminal_Model');
+		$this->load->model('Item_Model');
 		# New pages must be declared in this array to include them in the nav bar.
 		# array('Page Name', 'url', 'view name*' )
 		# *the view that will be loaded.
@@ -43,13 +46,16 @@ class Site extends CI_Controller {
 		$this->view($this->nav[0][2], $data);
 	}
 	public function load_terminals(){
-		$this->view($this->nav[1][2]);
+		$data['load_terminals'] = $this->Load_Terminal_Model->get_load_terminals();
+		$this->view($this->nav[1][2], $data);
 	}
 	public function shop_terminals(){
-		$this->view($this->nav[2][2]);
+		$data['shop_terminals'] = $this->Shop_Terminal_Model->get_shop_terminals();
+		$this->view($this->nav[2][2], $data);
 	}
 	public function items(){
-		$this->view($this->nav[3][2]);
+		$data['items'] = $this->Item_Model->get_items();
+		$this->view($this->nav[3][2], $data);
 	}
 	public function edit_user( $id_number ){
 		$data['users'] = $this->User_Model->get_user($id_number);

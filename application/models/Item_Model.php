@@ -36,19 +36,19 @@
         function get_items() {
             $query = $this->db->query("SELECT * FROM item");
             if($query->num_rows() > 0) {
-                $ret = $query->results();
+                $ret = $query->result();
             } else {
                 $ret = '200';
             }
             return $ret;
         }
  
-        function get_item($item_number){
-            $query = $this->db->query ("SELECT * FROM item WHERE item_number = '{$item_number}'");
+        function get_item($item_id){
+            $query = $this->db->query ("SELECT * FROM item WHERE item_number = '{$item_id}'");
             if($query->num_rows() > 0) {
                 $ret = $query->result();
             } else {
-                $ret = 'An item with this ID number does not exist.';
+                $ret = 'An item with this ID does not exist.';
             }
 
             return $ret;
