@@ -34,9 +34,8 @@
             return $ret;
         }
 
-        function add_user ($id_number, $name, $pin, $balance) {
-             $names = explode ('\ ', $name);      
-            $this->db->query( "INSERT INTO user (id_number, first_name, last_name, pin, balance) VALUES ( '{$id_number}', '{$name[0]}', '{$name[1]}', '{$pin}', '{$balance}' )");
+        function add_user ($id_number, $first_name, $last_name, $pin) {
+            $this->db->query( "INSERT INTO user (id_number, first_name, last_name, pin, balance) VALUES ( '{$id_number}', '{$first_name}', '{$last_name}', '{$pin}', 0 )");
             return "Ok";
         }
 
@@ -61,6 +60,7 @@
 
             return $ret;
         }
+        
         function update_user($id, $firstname, $lastname, $pin, $balance){
             $this->db->query( "UPDATE user SET balance = '{$balance}', pin = '{$pin}', first_name = '{$firstname}', last_name = '{$lastname}' WHERE id_number = '{$id}'");
         }

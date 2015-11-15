@@ -39,48 +39,42 @@ class Site extends CI_Controller {
 	}
 	public function welcome(){
 		$this->view();
-	}
+	} 
+
 	public function users($update=0, $id=null){
+		if($update==1){
+			$this->User_Model->add_user($this->input->post("id_number"),$this->input->post("first_name"),$this->input->post("last_name"),$this->input->post("pin"),$this->input->post("balance"));
+		}
 		if($update==2){
 			$this->User_Model->update_user($id,$this->input->post("firstname"),$this->input->post("lastname"),$this->input->post("pin"),$this->input->post("balance"));
 		}
 		$data['users'] = $this->User_Model->get_users();
-		$data['update'] = $update;
+		$data['update'] = $update; // I'm using this regardless of adding/editing entries ok
 		$this->view($this->nav[0][2], $data);
 	}
-	public function load_terminals($update=false,$id=null){
+
+	public function load_terminals($update=0, $id=null){
+		if($update==1){
+			$this->Load_Terminal_Model->add_load_terminal($this->input->post("pin"));
+		}
 		$data['load_terminals'] = $this->Load_Terminal_Model->get_load_terminals();
 		$this->view($this->nav[1][2], $data);
 	}
-	public function shop_terminals(){
+
+	public function shop_terminals($update=0, $id=null){
+		if($update==1){
+			$this->Shop_Terminal_Model->add_shop_terminal($this->input->post("balance"), $this->input->post("pin"));
+		}
 		$data['shop_terminals'] = $this->Shop_Terminal_Model->get_shop_terminals();
 		$this->view($this->nav[2][2], $data);
 	}
-	public function items(){
+
+	public function items($update=0, $id=null){
+		if($update==1){
+			$this->Item_Model->add_item($this->input->post("item_name"), $this->input->post("item_price"));
+		}
 		$data['items'] = $this->Item_Model->get_items();
 		$this->view($this->nav[3][2], $data);
-	}
-
-	/*
-		ADD FUNCTIONS
-	 */
-	public function add_item( $data ){
-		$data['items'] = $this->Item_Model->get_items();
-		$this->Item_Model->add_item($data->item_name, $data->item_price);
-		$this->view($this->nav[3][2], $data);
-	}
-
-
-	/*
-		EDIT FUNCTIONS
-	 */
-	public function edit_user( $id_number ){
-		$data['users'] = $this->User_Model->get_user($id_number);
-		$this->view('view_edit_user', $data);
-	}
-	public function edit_load_terminal( $id_number ){
-		$data['users'] = $this->Load_Terminal_Model->get_load_terminal($id_number);
-		$this->view('view_edit_loadterminal', $data);
 	}
 
 
@@ -97,14 +91,20 @@ class Site extends CI_Controller {
 		$data['buy_transactions'] = $this->Buy_Transaction_Model->get_buy_transactions_per_terminal($shop_terminal_id);
 		$this->view('view_buy_transactions', $data);
 	}
-	public function shop_terminal_stocks( $shop_terminal_id ){
-		$data['shop_terminal_id'] = $shop_terminal_id;
-		$data['stocks'] = $this->Stock_Model->get_stocks_per_terminal($shop_terminal_id);
+	public function shop_terminal_stocks( $update=0, $id=null ){
+		if($update==1){
+			$this->Stock_Model->add_stock($id, $item_id, $quantity);
+		}
+		$data['shop_terminal_id'] = $id;
+		$data['stocks'] = $this->Stock_Model->get_stocks_per_terminal($id);
 		$this->view('view_shop_terminal_stocks', $data);
 	}
-	public function item_stocks( $item_id ){
-		$data['item_id'] = $item_id;
-		$data['stocks'] = $this->Stock_Model->get_stocks_per_item($item_id);
+	public function item_stocks($update=0, $id=null){
+		if($update==1){
+			$this->Stock_Model->add_stock($shop_terminal_id, $id, $quantity);
+		}
+		$data['item_id'] = $id;
+		$data['stocks'] = $this->Stock_Model->get_stocks_per_item($id);
 		$this->view('view_item_stocks', $data);
 	}
 }

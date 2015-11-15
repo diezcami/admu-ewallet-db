@@ -3,7 +3,7 @@
 <div class="container">
   <?php
   $this->load->helper('url');
-    if($update==2){
+    if($update){
       echo "<div class=\"alert alert-success alert-dismissible\" role=\"alert\">";
       echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times</span></button>";
       echo "<strong>Success!</strong> Entry was updated.";
@@ -27,6 +27,7 @@
           </tr>
         </thead>
         
+
         <?php
           foreach( $users as $user ){
             echo "<tr>";
@@ -37,6 +38,16 @@
             echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='".site_url("site/edit_user/$user->id_number")."'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
             echo"</tr>";
           }
+
+          // ADD FORM
+            echo "<form action=\"".site_url("site/users/1/")."\" method=\"post\"><tr>";
+            echo "<td><b>Add User</b></td>";
+            echo "<td><input type='text' class='form-control' name='id_number' value='ID Number'></td>";
+            echo "<td><input type='text' class='form-control' name='first_name' value='First Name'></td>";
+            echo "<td><input type='text' class='form-control' name='last_name' value='Last Name'></td>";
+            echo "<td><input type='text' class='form-control' name='pin' value='Pin'></td>";
+            echo "<td><input type=\"submit\" class=\"btn btn-default\"></td>";
+            echo"</tr></form>";
         ?>
       </table>
     </div>
