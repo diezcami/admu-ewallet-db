@@ -2,7 +2,9 @@
 </br>
 <div class="container">
   <?php 
-    //var_dump($users);
+    if($update){
+      echo "<div class=\"alert alert-success\" role=\"alert\"> Successfully updated entry</div>";
+    }//var_dump($users);
   ?>
   <div class="row">
     <div class="panel panel-default">

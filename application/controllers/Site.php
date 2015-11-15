@@ -38,8 +38,12 @@ class Site extends CI_Controller {
 	public function welcome(){
 		$this->view();
 	}
-	public function users(){
+	public function users($update=false){
 		$data['users'] = $this->User_Model->get_users();
+		$data['update'] = $update;
+		if($update){
+			
+		}
 		$this->view($this->nav[0][2], $data);
 	}
 	public function load_terminals(){

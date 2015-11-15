@@ -18,6 +18,7 @@
             <th>Balance</th>
             <th style="text-align:center;"> </th>
           </tr>
+
         </thead>
         <!--<tr>
           <td>
@@ -37,13 +38,13 @@
         <?php
 
           foreach( $users as $user ){
-            echo "<tr>";
-            echo "<td><input type='text' class='form-control' value='".$user->id_number."'></td>";
-            echo "<td><input type='text' class='form-control' value='".$user->first_name." ".$user->last_name."'></td>";
-            echo "<td><input type='text' class='form-control' value='".$user->pin."'></td>";
-            echo "<td><input type='text' class='form-control' value='".$user->balance."'></td>";
-            echo "<td>update</td>";
-            echo"</tr>";
+            echo "<form action=\"../users/true\" method=\"post\"><tr>";
+            echo "<td>".$user->id_number."</td>";
+            echo "<td><input type='text' class='form-control' name='name' value='".$user->first_name." ".$user->last_name."'></td>";
+            echo "<td><input type='text' class='form-control' name='pin' value='".$user->pin."'></td>";
+            echo "<td><input type='text' class='form-control' name='balance' alue='".$user->balance."'></td>";
+            echo "<td><button type=\"submit\" class=\"btn btn-default\">Submit</button></td>";
+            echo"</tr></form>";
           }
         ?>
       </table>
