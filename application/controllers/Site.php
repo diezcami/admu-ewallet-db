@@ -61,10 +61,29 @@ class Site extends CI_Controller {
 		$data['items'] = $this->Item_Model->get_items();
 		$this->view($this->nav[3][2], $data);
 	}
+
+	/*
+		ADD FUNCTIONS
+	 */
+	public function add_item( $data ){
+		$data['items'] = $this->Item_Model->get_items();
+		$this->Item_Model->add_item($data->item_name, $data->item_price);
+		$this->view($this->nav[3][2], $data);
+	}
+
+
+	/*
+		EDIT FUNCTIONS
+	 */
 	public function edit_user( $id_number ){
 		$data['users'] = $this->User_Model->get_user($id_number);
 		$this->view('view_edit_user', $data);
 	}
+
+
+	/*
+		VIEW FUNCTIONS
+	 */
 	public function load_transactions( $load_terminal_id ){
 		$data['load_terminal_id'] = $load_terminal_id;
 		$data['load_transactions'] = $this->Load_Transaction_Model->get_load_transactions_per_terminal($load_terminal_id);

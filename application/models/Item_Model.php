@@ -24,13 +24,24 @@
             if ($query->num_rows() == 1 ) {
                 $this->db->query( "UPDATE item SET item_name = '{$item_name}' WHERE item_id = '{$item_id}' AND '{$shop_terminal_id}'");
             } elseif ( $query->num_rows() == 0 ) {
-                $this->db->query( "INSERT INTO item (item_id, item_name, item_price) VALUES ( '{$item_name}', '{$item_name}', '{$item_price}' )");
+                $this->db->query( "INSERT INTO item (item_name, item_price) VALUES ( '{$item_name}', '{$item_price}' )");
             } else {
                 return " Sync failed ";
             }
 
             return "Sync Successful";
         }   
+
+        function add_item ($item_name, $item_price) {
+             $data = array(
+                    'item_name' => $item_name,
+                    'item_price' => $item_price
+                );           
+            $this->db->query( "INSERT INTO item (item_name, item_price) VALUES ( '{$item_name}', '{$item_price}' )");
+
+            return "Ok";
+
+        }
         
 
         function get_items() {

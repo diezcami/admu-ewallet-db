@@ -27,8 +27,22 @@
             echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='edit_item/$item->item_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
             echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='item_stocks/$item->item_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
             echo"</tr>";
-          }
+          }       
         ?>
+
+        <tr>
+        <td><b>Add Item:</b></td>
+        <td><input type='text' class='form-control' id="item_name" value='Item Name'></td>
+        <td><input type='text' class='form-control' id="item_price" value='Item Price'></td>
+
+        <?php
+            $item_name = $_POST["item_name"];
+            $item_price = $_POST["item_price"];
+
+            echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='add_item/$item_name/$item_price'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
+        ?>
+        </tr>
+
       </table>
     </div>
   </div>
