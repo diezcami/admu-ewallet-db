@@ -1,6 +1,15 @@
 </br>
 </br>
 <div class="container">
+  <?php
+    if($update){
+      echo "<div class=\"alert alert-success alert-dismissible\" role=\"alert\">";
+      echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times</span></button>";
+      echo "<strong>Success!</strong> Entry was updated.";
+
+      echo "</div>";
+    }
+  ?>
   <div class="row">
     <div class="panel panel-default">
       <!-- Default panel contents -->
@@ -27,21 +36,16 @@
             echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='edit_item/$item->item_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
             echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='item_stocks/$item->item_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
             echo"</tr>";
-          }       
+          } 
+
+          // ADD FORM
+            echo "<form action=\"".site_url("site/items/1/")."\" method=\"post\"><tr>";
+            echo "<td><b>Add Item</b></td>";
+            echo "<td><input type='text' class='form-control' name='item_name' value='Item Name'></td>";
+            echo "<td><input type='text' class='form-control' name='item_price' value='Price'></td>";
+            echo "<td><input type=\"submit\" class=\"btn btn-default\"></td>";
+            echo"</tr></form>";      
         ?>
-
-        <tr>
-        <td><b>Add Item:</b></td>
-        <td><input type='text' class='form-control' id="item_name" value='Item Name'></td>
-        <td><input type='text' class='form-control' id="item_price" value='Item Price'></td>
-
-        <?php
-            $item_name = $_POST["item_name"];
-            $item_price = $_POST["item_price"];
-
-            echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='add_item/$item_name/$item_price'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
-        ?>
-        </tr>
 
       </table>
     </div>

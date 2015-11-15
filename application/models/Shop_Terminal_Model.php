@@ -22,8 +22,8 @@
             return $ret;
         }
 
-        function add_shop_terminal ($balance, $pin) {  
-            $this->db->query( "INSERT INTO shop_terminal (balance, pin) VALUES ( '{$balance}', '{$pin}' )");
+        function add_shop_terminal ($pin) {  
+            $this->db->query( "INSERT INTO shop_terminal (balance, pin) VALUES ( 0, '{$pin}' )");
             return "Ok";
         }
 

@@ -58,14 +58,16 @@ class Site extends CI_Controller {
 			$this->Load_Terminal_Model->add_load_terminal($this->input->post("pin"));
 		}
 		$data['load_terminals'] = $this->Load_Terminal_Model->get_load_terminals();
+		$data['update'] = $update;
 		$this->view($this->nav[1][2], $data);
 	}
 
 	public function shop_terminals($update=0, $id=null){
 		if($update==1){
-			$this->Shop_Terminal_Model->add_shop_terminal($this->input->post("balance"), $this->input->post("pin"));
+			$this->Shop_Terminal_Model->add_shop_terminal($this->input->post("pin"));
 		}
 		$data['shop_terminals'] = $this->Shop_Terminal_Model->get_shop_terminals();
+		$data['update'] = $update;
 		$this->view($this->nav[2][2], $data);
 	}
 
@@ -74,6 +76,7 @@ class Site extends CI_Controller {
 			$this->Item_Model->add_item($this->input->post("item_name"), $this->input->post("item_price"));
 		}
 		$data['items'] = $this->Item_Model->get_items();
+		$data['update'] = $update;
 		$this->view($this->nav[3][2], $data);
 	}
 
@@ -91,7 +94,9 @@ class Site extends CI_Controller {
 		$data['buy_transactions'] = $this->Buy_Transaction_Model->get_buy_transactions_per_terminal($shop_terminal_id);
 		$this->view('view_buy_transactions', $data);
 	}
-	public function shop_terminal_stocks( $update=0, $id=null ){
+
+	/* Params here are in the opposite order */
+	public function shop_terminal_stocks( $id=null, $update=0 ){
 		if($update==1){
 			$this->Stock_Model->add_stock($id, $item_id, $quantity);
 		}
@@ -99,12 +104,13 @@ class Site extends CI_Controller {
 		$data['stocks'] = $this->Stock_Model->get_stocks_per_terminal($id);
 		$this->view('view_shop_terminal_stocks', $data);
 	}
-	public function item_stocks($update=0, $id=null){
+	public function item_stocks($id=null, $update=0){
 		if($update==1){
 			$this->Stock_Model->add_stock($shop_terminal_id, $id, $quantity);
 		}
 		$data['item_id'] = $id;
 		$data['stocks'] = $this->Stock_Model->get_stocks_per_item($id);
+		$data['update'] = $update;
 		$this->view('view_item_stocks', $data);
 	}
 }
