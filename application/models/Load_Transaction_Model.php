@@ -19,7 +19,7 @@
         }   
 
         function get_load_transactions_per_user ($id_number){
-            $query = $this->db->query ("SELECT * FROM load_transactions WHERE id_number = '{$id_number}'");
+            $query = $this->db->query ("SELECT * FROM load_transaction WHERE id_number = '{$id_number}'");
             if($query->num_rows() > 0) {
                 $ret = $query->result();
             } else {
@@ -30,7 +30,7 @@
         }
 
         function get_load_transactions_per_terminal ($load_terminal_id){
-            $query = $this->db->query ("SELECT * FROM load_transactions WHERE load_terminal_id = '{$load_terminal_id}'");
+            $query = $this->db->query ("SELECT * FROM load_transaction WHERE load_terminal_id = '{$load_terminal_id}'");
             if($query->num_rows() > 0) {
                 $ret = $query->result();
             } else {

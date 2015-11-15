@@ -12,6 +12,7 @@
             <th>Load Terminal ID</th>           
             <th>PIN</th>
             <th style="text-align:center;">Details</th>
+            <th style="text-align:center;">View Transactions</th>
           </tr>
         </thead>
         
@@ -21,6 +22,7 @@
             echo "<td>".$load_terminal->load_terminal_id."</td>";
             echo "<td>".$load_terminal->pin."</td>";
             echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='edit_load_terminal/$load_terminal->load_terminal_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
+            echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='load_transactions/$load_terminal->load_terminal_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
             echo"</tr>";
           }
         ?>

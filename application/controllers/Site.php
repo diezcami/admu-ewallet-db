@@ -11,6 +11,8 @@ class Site extends CI_Controller {
 		$this->load->model('User_Model');
 		$this->load->model('Shop_Terminal_Model');
 		$this->load->model('Load_Terminal_Model');
+		$this->load->model('Load_Transaction_Model');
+		$this->load->model('Buy_Transaction_Model');
 		$this->load->model('Item_Model');
 		# New pages must be declared in this array to include them in the nav bar.
 		# array('Page Name', 'url', 'view name*' )
@@ -60,6 +62,11 @@ class Site extends CI_Controller {
 	public function edit_user( $id_number ){
 		$data['users'] = $this->User_Model->get_user($id_number);
 		$this->view('view_edit_user', $data);
+	}
+	public function load_transactions( $load_terminal_id ){
+		$data['load_terminal_id'] = $load_terminal_id;
+		$data['load_transactions'] = $this->Load_Transaction_Model->get_load_transactions_per_terminal($load_terminal_id);
+		$this->view('view_load_transactions', $data);
 	}
 }
 /* End of file welcome.php */
