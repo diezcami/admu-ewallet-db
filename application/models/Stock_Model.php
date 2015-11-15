@@ -23,7 +23,29 @@
 
             return "Sync Successful";
         }   
+    }
 
+        function get_stocks_per_item($item_number){
+            $query = $this->db->query ("SELECT * FROM stock WHERE item_number = '{$item_number}'");
+            if($query->num_rows() > 0) {
+                $ret = $query->result();
+            } else {
+                $ret = 'This item does not exist or is not stocked anywhere.';
+            }
+
+            return $ret;
+        }
+        
+        function get_stocks_per_shop($shop_terminal_id){
+            $query = $this->db->query ("SELECT * FROM stock WHERE shop_terminal_id = '{$shop_terminal_id}'");
+            if($query->num_rows() > 0) {
+                $ret = $query->result();
+            } else {
+                $ret = 'This shop does not exist or has no stocks.';
+            }
+
+            return $ret;
+        } 
     }
 
 ?>
