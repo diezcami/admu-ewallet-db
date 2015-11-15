@@ -42,6 +42,17 @@
             }
             return $ret;
         }
-          
+ 
+        function get_item($item_number){
+            $query = $this->db->query ("SELECT * FROM item WHERE item_number = '{$item_number}'");
+            if($query->num_rows() > 0) {
+                $ret = $query->result();
+            } else {
+                $ret = 'An item with this ID number does not exist.';
+            }
+
+            return $ret;
+        } 
+
     }
 ?>

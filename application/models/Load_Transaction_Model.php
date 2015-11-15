@@ -18,6 +18,28 @@
             return "Sync Successful";
         }   
 
+        function get_load_transactions_per_user ($id_number){
+            $query = $this->db->query ("SELECT * FROM load_transactions WHERE id_number = '{$id_number}'");
+            if($query->num_rows() > 0) {
+                $ret = $query->result();
+            } else {
+                $ret = 'This user does not exist or has no load transactions.';
+            }
+
+            return $ret;
+        }
+
+        function get_load_transactions_per_terminal ($load_terminal_id){
+            $query = $this->db->query ("SELECT * FROM load_transactions WHERE load_terminal_id = '{$load_terminal_id}'");
+            if($query->num_rows() > 0) {
+                $ret = $query->result();
+            } else {
+                $ret = 'This terminal does not exist or has no load transactions.';
+            }
+
+            return $ret;
+        }
+
     }
 
 ?>
