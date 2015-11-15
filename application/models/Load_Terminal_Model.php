@@ -22,6 +22,11 @@
             return $ret;
         }
 
+        function add_load_terminal ($pin) {        
+            $this->db->query( "INSERT INTO load_terminal (pin) VALUES ( '{$pin}' )");
+            return "Ok";
+        }
+        
         function get_load_terminal($load_terminal_id){
             $query = $this->db->query ("SELECT * FROM user WHERE load_terminal_id = '{$load_terminal_id}'");
             if($query->num_rows() > 0) {

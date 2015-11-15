@@ -22,6 +22,11 @@
             return $ret;
         }
 
+        function add_shop_terminal ($pin) {  
+            $this->db->query( "INSERT INTO shop_terminal (balance, pin) VALUES ( 0, '{$pin}' )");
+            return "Ok";
+        }
+
         function get_shop_terminal($shop_terminal_id){
             $query = $this->db->query ("SELECT * FROM user WHERE shop_terminal_id = '{$shop_terminal_id}'");
             if($query->num_rows() > 0) {
