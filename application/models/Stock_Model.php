@@ -25,7 +25,7 @@
         }   
 
         function add_stock ($shop_terminal_id, $item_id, $quantity) {        
-            $this->db->query( "INSERT INTO item (shop_terminal_id, item_id, quantity) VALUES ( '{$shop_terminal_id}', '{$item_id}', '{$quantity}' )");
+            $this->db->query( "INSERT INTO stock (shop_terminal_id, item_id, quantity) VALUES ( '{$shop_terminal_id}', '{$item_id}', '{$quantity}' )");
             return "Ok";
         } 
 

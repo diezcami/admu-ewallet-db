@@ -96,17 +96,19 @@ class Site extends CI_Controller {
 	}
 
 	/* Params here are in the opposite order */
-	public function shop_terminal_stocks( $id=null, $update=0 ){
+	public function shop_terminal_stocks( $id=null, $update=0 ){ //id = shop_terminal_id
 		if($update==1){
-			$this->Stock_Model->add_stock($id, $item_id, $quantity);
+			$this->Stock_Model->add_stock($id, $this->input->post("item_id"), $this->input->post("quantity"));
 		}
 		$data['shop_terminal_id'] = $id;
 		$data['stocks'] = $this->Stock_Model->get_stocks_per_terminal($id);
+		$data['update'] = $update; 
 		$this->view('view_shop_terminal_stocks', $data);
 	}
-	public function item_stocks($id=null, $update=0){
+
+	public function item_stocks($id=null, $update=0){ //id = item_id
 		if($update==1){
-			$this->Stock_Model->add_stock($shop_terminal_id, $id, $quantity);
+			$this->Stock_Model->add_stock($this->input->post("shop_terminal_id"), $id, $this->input->post("quantity"));
 		}
 		$data['item_id'] = $id;
 		$data['stocks'] = $this->Stock_Model->get_stocks_per_item($id);
