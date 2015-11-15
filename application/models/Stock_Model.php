@@ -23,10 +23,9 @@
 
             return "Sync Successful";
         }   
-    }
 
-        function get_stocks_per_item($item_number){
-            $query = $this->db->query ("SELECT * FROM stock WHERE item_number = '{$item_number}'");
+        function get_stocks_per_item($item_id){
+            $query = $this->db->query ("SELECT * FROM stock WHERE item_id = '{$item_id}'");
             if($query->num_rows() > 0) {
                 $ret = $query->result();
             } else {
@@ -36,7 +35,7 @@
             return $ret;
         }
         
-        function get_stocks_per_shop($shop_terminal_id){
+        function get_stocks_per_terminal($shop_terminal_id){
             $query = $this->db->query ("SELECT * FROM stock WHERE shop_terminal_id = '{$shop_terminal_id}'");
             if($query->num_rows() > 0) {
                 $ret = $query->result();

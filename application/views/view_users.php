@@ -21,6 +21,7 @@
             <th style="text-align:center;">Details</th>
           </tr>
         </thead>
+        
         <?php
           foreach( $users as $user ){
             echo "<tr>";
@@ -32,23 +33,6 @@
             echo"</tr>";
           }
         ?>
-        <!--<tr>
-          <td>Heights</td>
-          <td>Mark Aldecimo</td>
-          <td>17 JUN 2014 / 23 JUL 2014</td>
-          <td><a href="http://heights.compsat.org">heights.compsat.org</a></td>
-          <td>3/5</td>
-          <td style="text-align:center;"><a type="button" class="btn btn-default btn-sm" href="#"><span class="glyphicon glyphicon-list-alt"></span></a></td>
-        </tr>
-        <tr>
-          <td>CompSAt</td>
-          <td>Basil Begonia</td>
-          <td>N/A</td>
-          <td>N/A</td>
-          <td>4/5</td>
-          <td style="text-align:center;"><a type="button" class="btn btn-default btn-sm" href="#"><span class="glyphicon glyphicon-list-alt"></span></a></td>
-        </tr>
-        -->
       </table>
     </div>
   </div>

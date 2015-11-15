@@ -9,6 +9,13 @@ class Site extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('User_Model');
+		$this->load->model('Shop_Terminal_Model');
+		$this->load->model('Load_Terminal_Model');
+		$this->load->model('Load_Transaction_Model');
+		$this->load->model('Buy_Transaction_Model');
+		$this->load->model('Item_Model');
+		$this->load->model('Stock_Model');
+
 		# New pages must be declared in this array to include them in the nav bar.
 		# array('Page Name', 'url', 'view name*' )
 		# *the view that will be loaded.
@@ -47,17 +54,59 @@ class Site extends CI_Controller {
 		$this->view($this->nav[0][2], $data);
 	}
 	public function load_terminals(){
-		$this->view($this->nav[1][2]);
+		$data['load_terminals'] = $this->Load_Terminal_Model->get_load_terminals();
+		$this->view($this->nav[1][2], $data);
 	}
 	public function shop_terminals(){
-		$this->view($this->nav[2][2]);
+		$data['shop_terminals'] = $this->Shop_Terminal_Model->get_shop_terminals();
+		$this->view($this->nav[2][2], $data);
 	}
 	public function items(){
-		$this->view($this->nav[3][2]);
+		$data['items'] = $this->Item_Model->get_items();
+		$this->view($this->nav[3][2], $data);
 	}
+
+	/*
+		ADD FUNCTIONS
+	 */
+	public function add_item( $data ){
+		$data['items'] = $this->Item_Model->get_items();
+		$this->Item_Model->add_item($data->item_name, $data->item_price);
+		$this->view($this->nav[3][2], $data);
+	}
+
+
+	/*
+		EDIT FUNCTIONS
+	 */
 	public function edit_user( $id_number ){
 		$data['users'] = $this->User_Model->get_user($id_number);
 		$this->view('view_edit_user', $data);
+	}
+
+
+	/*
+		VIEW FUNCTIONS
+	 */
+	public function load_transactions( $load_terminal_id ){
+		$data['load_terminal_id'] = $load_terminal_id;
+		$data['load_transactions'] = $this->Load_Transaction_Model->get_load_transactions_per_terminal($load_terminal_id);
+		$this->view('view_load_transactions', $data);
+	}
+	public function buy_transactions( $shop_terminal_id ){
+		$data['shop_terminal_id'] = $shop_terminal_id;
+		$data['buy_transactions'] = $this->Buy_Transaction_Model->get_buy_transactions_per_terminal($shop_terminal_id);
+		$this->view('view_buy_transactions', $data);
+	}
+	public function shop_terminal_stocks( $shop_terminal_id ){
+		$data['shop_terminal_id'] = $shop_terminal_id;
+		$data['stocks'] = $this->Stock_Model->get_stocks_per_terminal($shop_terminal_id);
+		$this->view('view_shop_terminal_stocks', $data);
+	}
+	public function item_stocks( $item_id ){
+		$data['item_id'] = $item_id;
+		$data['stocks'] = $this->Stock_Model->get_stocks_per_item($item_id);
+		$this->view('view_item_stocks', $data);
 	}
 }
 /* End of file welcome.php */
