@@ -80,6 +80,11 @@ class Site extends CI_Controller {
 		$data['stocks'] = $this->Stock_Model->get_stocks_per_terminal($shop_terminal_id);
 		$this->view('view_shop_terminal_stocks', $data);
 	}
+	public function item_stocks( $item_id ){
+		$data['item_id'] = $item_id;
+		$data['stocks'] = $this->Stock_Model->get_stocks_per_item($item_id);
+		$this->view('view_item_stocks', $data);
+	}
 }
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */
