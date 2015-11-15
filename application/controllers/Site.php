@@ -8,7 +8,7 @@ class Site extends CI_Controller {
 	private $nav;
 	public function __construct(){
 		parent::__construct();
-		$this->load->model('User_model');
+		$this->load->model('User_Model');
 		# New pages must be declared in this array to include them in the nav bar.
 		# array('Page Name', 'url', 'view name*' )
 		# *the view that will be loaded.
@@ -39,7 +39,7 @@ class Site extends CI_Controller {
 		$this->view();
 	}
 	public function users(){
-		$data['users'] = $this->User_model->get_users();
+		$data['users'] = $this->User_Model->get_users();
 		$this->view($this->nav[0][2], $data);
 	}
 	public function load_terminals(){
