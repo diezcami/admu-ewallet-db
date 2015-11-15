@@ -12,7 +12,9 @@
             <th>Shop Terminal ID</th>           
             <th>Balance</th>
             <th>PIN</th>
-            <th style="text-align:center;">Details</th>
+            <th style="text-align:center;">Edit</th>
+            <th style="text-align:center;">View Transactions</th>
+            <th style="text-align:center;">View Stock</th>
           </tr>
         </thead>
         
@@ -23,6 +25,8 @@
             echo "<td>".$shop_terminal->balance."</td>";
             echo "<td>".$shop_terminal->pin."</td>";
             echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='edit_shop_terminal/$shop_terminal->shop_terminal_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
+            echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='buy_transactions/$shop_terminal->shop_terminal_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
+            echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='shop_terminal_stocks/$shop_terminal->shop_terminal_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";            
             echo"</tr>";
           }
         ?>

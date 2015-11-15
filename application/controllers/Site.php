@@ -68,6 +68,16 @@ class Site extends CI_Controller {
 		$data['load_transactions'] = $this->Load_Transaction_Model->get_load_transactions_per_terminal($load_terminal_id);
 		$this->view('view_load_transactions', $data);
 	}
+	public function buy_transactions( $shop_terminal_id ){
+		$data['shop_terminal_id'] = $shop_terminal_id;
+		$data['buy_transactions'] = $this->Buy_Transaction_Model->get_buy_transactions_per_terminal($shop_terminal_id);
+		$this->view('view_buy_transactions', $data);
+	}
+	public function shop_terminal_stocks( $shop_terminal_id ){
+		$data['shop_terminal_id'] = $shop_terminal_id;
+		$data['stocks'] = $this->Buy_Transaction_Model->get_stocks_per_terminal($shop_terminal_id);
+		$this->view('view_shop_terminal_stocks', $data);
+	}
 }
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */

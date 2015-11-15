@@ -36,7 +36,7 @@
             return $ret;
         }
         
-        function get_stocks_per_shop($shop_terminal_id){
+        function get_stocks_per_terminal($shop_terminal_id){
             $query = $this->db->query ("SELECT * FROM stock WHERE shop_terminal_id = '{$shop_terminal_id}'");
             if($query->num_rows() > 0) {
                 $ret = $query->result();
