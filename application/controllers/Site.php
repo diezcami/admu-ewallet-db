@@ -40,15 +40,15 @@ class Site extends CI_Controller {
 	public function welcome(){
 		$this->view();
 	}
-	public function users($update=false, $id=null){
-		if($update){
+	public function users($update=0, $id=null){
+		if($update==2){
 			$this->User_Model->update_user($id,$this->input->post("firstname"),$this->input->post("lastname"),$this->input->post("pin"),$this->input->post("balance"));
 		}
 		$data['users'] = $this->User_Model->get_users();
 		$data['update'] = $update;
 		$this->view($this->nav[0][2], $data);
 	}
-	public function load_terminals(){
+	public function load_terminals($update=false,$id=null){
 		$data['load_terminals'] = $this->Load_Terminal_Model->get_load_terminals();
 		$this->view($this->nav[1][2], $data);
 	}
@@ -77,6 +77,10 @@ class Site extends CI_Controller {
 	public function edit_user( $id_number ){
 		$data['users'] = $this->User_Model->get_user($id_number);
 		$this->view('view_edit_user', $data);
+	}
+	public function edit_load_terminal( $id_number ){
+		$data['users'] = $this->Load_Terminal_Model->get_load_terminal($id_number);
+		$this->view('view_edit_loadterminal', $data);
 	}
 
 

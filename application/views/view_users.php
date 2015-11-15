@@ -3,7 +3,7 @@
 <div class="container">
   <?php
   $this->load->helper('url');
-    if($update){
+    if($update==2){
       echo "<div class=\"alert alert-success alert-dismissible\" role=\"alert\">";
       echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times</span></button>";
       echo "<strong>Success!</strong> Entry was updated.";
@@ -23,7 +23,7 @@
             <th>Name</th>
             <th>PIN</th>
             <th>Balance</th>
-            <th style="text-align:center;">Details</th>
+            <th style="text-align:center;">Edit</th>
           </tr>
         </thead>
         

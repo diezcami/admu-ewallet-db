@@ -39,7 +39,7 @@
   
         <?php
           foreach( $users as $user ){
-            echo "<form action=\"".site_url("site/users/true/".$user->id_number)."\" method=\"post\"><tr>";
+            echo "<form action=\"".site_url("site/users/2/".$user->id_number)."\" method=\"post\"><tr>";
             echo "<td><input type='text' class='form-control' name='id' value='".$user->id_number."'></td>";
             echo "<td><input type='text' class='form-control' name='firstname' value='".$user->first_name."'></td>";
             echo "<td><input type='text' class='form-control' name='lastname' value='".$user->last_name."'></td>";
