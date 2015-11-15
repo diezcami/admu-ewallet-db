@@ -1,9 +1,14 @@
 </br>
 </br>
 <div class="container">
-  <?php 
+  <?php
+  $this->load->helper('url');
     if($update){
-      echo "<div class=\"alert alert-success\" role=\"alert\"> Successfully updated entry</div>";
+      echo "<div class=\"alert alert-success alert-dismissible\" role=\"alert\">";
+      echo "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times</span></button>";
+      echo "<strong>Success!</strong> Entry was updated.";
+
+      echo "</div>";
     }//var_dump($users);
   ?>
   <div class="row">
@@ -29,7 +34,7 @@
             echo "<td>".$user->first_name." ".$user->last_name."</td>";
             echo "<td>".$user->pin."</td>";
             echo "<td>".$user->balance."</td>";
-            echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='edit_user/$user->id_number'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
+            echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='".site_url("site/edit_user/$user->id_number")."'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
             echo"</tr>";
           }
         ?>

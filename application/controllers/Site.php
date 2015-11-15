@@ -1,9 +1,4 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/*
-	Made by Basil Miguel B. Begonia
-	CompSAt AVP for Development
-	SY 2014 - 2015
-*/
 class Site extends CI_Controller {
 	private $nav;
 	public function __construct(){
@@ -45,12 +40,12 @@ class Site extends CI_Controller {
 	public function welcome(){
 		$this->view();
 	}
-	public function users($update=false){
+	public function users($update=false, $id=null){
+		if($update){
+			$this->User_Model->update_user($id,$this->input->post("firstname"),$this->input->post("lastname"),$this->input->post("pin"),$this->input->post("balance"));
+		}
 		$data['users'] = $this->User_Model->get_users();
 		$data['update'] = $update;
-		if($update){
-			
-		}
 		$this->view($this->nav[0][2], $data);
 	}
 	public function load_terminals(){

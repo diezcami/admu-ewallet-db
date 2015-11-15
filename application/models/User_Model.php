@@ -54,7 +54,10 @@
             }
 
             return $ret;
-        } 
+        }
+        function update_user($id, $firstname, $lastname, $pin, $balance){
+            $this->db->query( "UPDATE user SET balance = '{$balance}', pin = '{$pin}', first_name = '{$firstname}', last_name = '{$lastname}' WHERE id_number = '{$id}'");
+        }
     }
 
 ?>
