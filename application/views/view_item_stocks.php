@@ -31,12 +31,12 @@
 
   
         <?php
-
+          //var_dump($stocks);
           foreach( $stocks as $stock ){
             echo "<tr>";
             echo "<td>".$stock->shop_terminal_id."</td>";
             echo "<td>".$stock->quantity."</td>";
-            echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href=''><span class='glyphicon glyphicon-list-alt'></span></a></td>";
+            echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='".site_url("site/edit_item_stock/".$stock->item_id."/".$stock->shop_terminal_id)."'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
             // href: edit_stock/$item->item_id/
             echo"</tr>";
           }
