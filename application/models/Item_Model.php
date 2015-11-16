@@ -48,7 +48,7 @@
         }
  
         function get_item($item_id){
-            $query = $this->db->query ("SELECT * FROM item WHERE item_number = '{$item_id}'");
+            $query = $this->db->query ("SELECT * FROM item WHERE item_id = '{$item_id}'");
             if($query->num_rows() > 0) {
                 $ret = $query->result();
             } else {
@@ -58,5 +58,8 @@
             return $ret;
         } 
 
+        function update_item($id, $name, $price){
+            $this->db->query( "UPDATE item SET item_name = '{$name}', item_price = '{$price}' WHERE item_id = '{$id}'");
+        }
     }
 ?>

@@ -33,7 +33,7 @@
             echo "<td>".$item->item_id."</td>";
             echo "<td>".$item->item_name."</td>";
             echo "<td>".$item->item_price."</td>";
-            echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='edit_item/$item->item_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
+            echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='".site_url("site/edit_item/".$item->item_id)."'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
             echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='item_stocks/$item->item_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
             echo"</tr>";
           } 

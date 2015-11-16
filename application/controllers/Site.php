@@ -81,6 +81,9 @@ class Site extends CI_Controller {
 		if($update==1){
 			$this->Item_Model->add_item($this->input->post("item_name"), $this->input->post("item_price"));
 		}
+		if($update==2){
+			$this->Item_Model->update_item($id,$this->input->post("name"),$this->input->post("price"));
+		}
 		$data['items'] = $this->Item_Model->get_items();
 		$data['update'] = $update;
 		$this->view($this->nav[3][2], $data);
@@ -100,6 +103,10 @@ class Site extends CI_Controller {
 	public function edit_shop_terminal( $id_number ){
 		$data['shop_terminals'] = $this->Shop_Terminal_Model->get_shop_terminal($id_number);
 		$this->view('view_edit_shop_terminal', $data);
+	}
+	public function edit_item( $id_number ){
+		$data['items'] = $this->Item_Model->get_item($id_number);
+		$this->view('view_edit_item', $data);
 	}
 
 	/*
