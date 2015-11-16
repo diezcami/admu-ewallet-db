@@ -69,6 +69,9 @@ class Site extends CI_Controller {
 		if($update==1){
 			$this->Shop_Terminal_Model->add_shop_terminal($this->input->post("pin"));
 		}
+		if($update==2){
+			$this->Shop_Terminal_Model->update_shop_terminal($id,$this->input->post("pin"),$this->input->post("balance"));
+		}
 		$data['shop_terminals'] = $this->Shop_Terminal_Model->get_shop_terminals();
 		$data['update'] = $update;
 		$this->view($this->nav[2][2], $data);
@@ -93,6 +96,10 @@ class Site extends CI_Controller {
 	public function edit_load_terminal( $id_number ){
 		$data['load_terminals'] = $this->Load_Terminal_Model->get_load_terminal($id_number);
 		$this->view('view_edit_load_terminal', $data);
+	}
+	public function edit_shop_terminal( $id_number ){
+		$data['shop_terminals'] = $this->Shop_Terminal_Model->get_shop_terminal($id_number);
+		$this->view('view_edit_shop_terminal', $data);
 	}
 
 	/*

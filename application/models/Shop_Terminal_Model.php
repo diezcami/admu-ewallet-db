@@ -28,7 +28,7 @@
         }
 
         function get_shop_terminal($shop_terminal_id){
-            $query = $this->db->query ("SELECT * FROM user WHERE shop_terminal_id = '{$shop_terminal_id}'");
+            $query = $this->db->query ("SELECT * FROM shop_terminal WHERE shop_terminal_id = '{$shop_terminal_id}'");
             if($query->num_rows() > 0) {
                 $ret = $query->result();
             } else {
@@ -36,7 +36,10 @@
             }
 
             return $ret;
-        } 
+        }
+        function update_shop_terminal($id, $pin, $balance){
+            $this->db->query( "UPDATE shop_terminal SET balance = '{$balance}', pin = '{$pin}' WHERE shop_terminal_id = '{$id}'");
+        }
     }
 
 ?>
