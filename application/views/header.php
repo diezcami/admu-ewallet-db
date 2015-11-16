@@ -55,7 +55,7 @@ if($isWelcome==true){
 			  		#echo "<li class='active'><a href='#'>HAHA</a></li>";
 			  	?>
 			  </ul>
-			  <ul class="nav navbar-nav navbar-right">
+			  <!--<ul class="nav navbar-nav navbar-right">
 			    <li class="dropdown">
 			      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign in <b class="caret"></b></a>
 			      <ul class="dropdown-menu" id="signin-dropdown" style="padding: 15px;`">
@@ -70,7 +70,7 @@ if($isWelcome==true){
 					</form>
 			      </ul>
 			    </li>
-			  </ul>
+			  </ul>-->
 			</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
 		</div>
