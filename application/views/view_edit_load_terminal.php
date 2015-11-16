@@ -20,7 +20,7 @@
             echo "<form action=\"".site_url("site/load_terminals/2/".$load_terminal->load_terminal_id)."\" method=\"post\"><tr>";
             echo "<td>".$load_terminal->load_terminal_id."</td>";
             echo "<td><input type='text' class='form-control' name='pin' value='".$load_terminal->pin."'></td>";
-            echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='edit_load_terminal/$load_terminal->load_terminal_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
+            echo "<td><input type=\"submit\" class=\"btn btn-default\"></td>";
             echo"</tr></form>";
           }
         ?>

@@ -57,6 +57,9 @@ class Site extends CI_Controller {
 		if($update==1){
 			$this->Load_Terminal_Model->add_load_terminal($this->input->post("pin"));
 		}
+		if($update==2){
+			$this->Load_Terminal_Model->update_load_terminal($id,$this->input->post("pin"));
+		}
 		$data['load_terminals'] = $this->Load_Terminal_Model->get_load_terminals();
 		$data['update'] = $update;
 		$this->view($this->nav[1][2], $data);
@@ -80,6 +83,17 @@ class Site extends CI_Controller {
 		$this->view($this->nav[3][2], $data);
 	}
 
+	/*
+		EDIT FUNCTIONS
+	 */
+	public function edit_user( $id_number ){
+		$data['users'] = $this->User_Model->get_user($id_number);
+		$this->view('view_edit_user', $data);
+	}
+	public function edit_load_terminal( $id_number ){
+		$data['load_terminals'] = $this->Load_Terminal_Model->get_load_terminal($id_number);
+		$this->view('view_edit_load_terminal', $data);
+	}
 
 	/*
 		VIEW FUNCTIONS
