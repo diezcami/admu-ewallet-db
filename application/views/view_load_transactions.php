@@ -15,7 +15,6 @@
           <tr>
             <th>Load Transaction ID</th>           
             <th>Amount Loaded</th>
-            <th>Timestamp</th>
             <th>ID Number</th>
           </tr>
         </thead>
@@ -27,7 +26,6 @@
             echo "<tr>";
             echo "<td>".$load_transaction->load_transaction_id."</td>";
             echo "<td>".$load_transaction->amount_loaded."</td>";
-            echo "<td>".$load_transaction->load_transaction_ts."</td>";
             echo "<td>".$load_transaction->id_number."</td>";
             echo"</tr>";
           }
