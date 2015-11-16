@@ -108,6 +108,10 @@ class Site extends CI_Controller {
 		$data['items'] = $this->Item_Model->get_item($id_number);
 		$this->view('view_edit_item', $data);
 	}
+	public function edit_shop_terminal_stock( $terminal_id, $item_id ){
+		$data['stocks'] = $this->Stock_Model->get_stock($terminal_id, $item_id);
+		$this->view('view_edit_shop_terminal_stock', $data);
+	}
 
 	/*
 		VIEW FUNCTIONS
@@ -124,12 +128,15 @@ class Site extends CI_Controller {
 	}
 
 	/* Params here are in the opposite order */
-	public function shop_terminal_stocks( $id=null, $update=0 ){ //id = shop_terminal_id
+	public function shop_terminal_stocks( $terminal_id=null, $update=0,$item_id=null  ){ //id = shop_terminal_id
 		if($update==1){
-			$this->Stock_Model->add_stock($id, $this->input->post("item_id"), $this->input->post("quantity"));
+			$this->Stock_Model->add_stock($terminal_id, $this->input->post("item_id"), $this->input->post("quantity"));
 		}
-		$data['shop_terminal_id'] = $id;
-		$data['stocks'] = $this->Stock_Model->get_stocks_per_terminal($id);
+		if($update==2){
+			$this->Stock_Model->update_stock($terminal_id,$item_id,$this->input->post("quantity"));
+		}
+		$data['shop_terminal_id'] = $terminal_id;
+		$data['stocks'] = $this->Stock_Model->get_stocks_per_terminal($terminal_id);
 		$data['update'] = $update; 
 		$this->view('view_shop_terminal_stocks', $data);
 	}
