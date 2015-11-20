@@ -12,6 +12,7 @@ if($isWelcome==true){
 		$this->load->helper('url')
 	?>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url("css/bootstrap.css")?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url("css/style.css")?>">
 	<title>AdMU E-Wallet</title>
 </head>
 <!--<body style="background-image: url('<?php# echo base_url("assets/congruent_outline.png")?>');">-->
@@ -54,7 +55,7 @@ if($isWelcome==true){
 			  		#echo "<li class='active'><a href='#'>HAHA</a></li>";
 			  	?>
 			  </ul>
-			  <ul class="nav navbar-nav navbar-right">
+			  <!--<ul class="nav navbar-nav navbar-right">
 			    <li class="dropdown">
 			      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign in <b class="caret"></b></a>
 			      <ul class="dropdown-menu" id="signin-dropdown" style="padding: 15px;`">
@@ -69,7 +70,7 @@ if($isWelcome==true){
 					</form>
 			      </ul>
 			    </li>
-			  </ul>
+			  </ul>-->
 			</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
 		</div>

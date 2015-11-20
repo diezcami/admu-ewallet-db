@@ -19,11 +19,9 @@ class Stock_Controller extends REST_Controller {
         $temp = substr($temp, 7);
         $params = json_decode($temp, TRUE);
         $this->load->model('Stock_Model');
-
         for( $i = 0; $i < count($params); $i++ ){
             $temp = $this->Stock_Model->sync_stocks($params[$i]['shop_terminal_id'], $params[$i]['item_id'], $params[$i]['quantity']);
         }
-
         $this->response($temp, 404);
    }
 }

@@ -1,5 +1,5 @@
 <?php 
-    class User_model extends CI_Model {
+    class User_Model extends CI_Model {
 
         /**
          * Error Descriptions:
@@ -34,6 +34,11 @@
             return $ret;
         }
 
+        function add_user ($id_number, $first_name, $last_name, $pin) {
+            $this->db->query( "INSERT INTO user (id_number, first_name, last_name, pin, balance) VALUES ( '{$id_number}', '{$first_name}', '{$last_name}', '{$pin}', 0 )");
+            return "Ok";
+        }
+
         function get_users(){
             $query = $this->db->query ("SELECT * FROM user");
             if($query->num_rows() > 0) {
@@ -43,7 +48,22 @@
             }
 
             return $ret;
-        }      
+        }
+
+        function get_user($id_number){
+            $query = $this->db->query ("SELECT * FROM user WHERE id_number = '{$id_number}'");
+            if($query->num_rows() > 0) {
+                $ret = $query->result();
+            } else {
+                $ret = 'A user with this ID number does not exist.';
+            }
+
+            return $ret;
+        }
+        
+        function update_user($id, $firstname, $lastname, $pin, $balance){
+            $this->db->query( "UPDATE user SET balance = '{$balance}', pin = '{$pin}', first_name = '{$firstname}', last_name = '{$lastname}' WHERE id_number = '{$id}'");
+        }
     }
 
 ?>
