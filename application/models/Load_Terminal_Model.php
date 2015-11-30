@@ -27,6 +27,17 @@
             return "Ok";
         }
         
+        function get_load_terminal_pin ($load_terminal_id){
+            $query = $this->db->query ("SELECT pin FROM load_terminal WHERE load_terminal_id = '{$load_terminal_id}'");
+            if($query->num_rows() > 0) {
+                $ret = $query->result();
+            } else {
+                $ret = 'A load terminal with this ID number does not exist.';
+            }
+
+            return $ret;
+        }
+
         function get_load_terminal($load_terminal_id){
             $query = $this->db->query ("SELECT * FROM load_terminal WHERE load_terminal_id = '{$load_terminal_id}'");
             if($query->num_rows() > 0) {
@@ -37,6 +48,7 @@
 
             return $ret;
         }
+
         function update_load_terminal($id, $pin){
             $this->db->query( "UPDATE load_terminal SET pin = '{$pin}' WHERE load_terminal_id = '{$id}'");
         }

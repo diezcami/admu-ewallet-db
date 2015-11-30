@@ -27,6 +27,17 @@
             return "Ok";
         }
 
+        function get_shop_terminal_pin($shop_terminal_id){
+            $query = $this->db->query ("SELECT pin FROM shop_terminal WHERE shop_terminal_id = '{$shop_terminal_id}'");
+            if($query->num_rows() > 0) {
+                $ret = $query->result();
+            } else {
+                $ret = 'A shop terminal with this ID number does not exist.';
+            }
+
+            return $ret;
+        }
+
         function get_shop_terminal($shop_terminal_id){
             $query = $this->db->query ("SELECT * FROM shop_terminal WHERE shop_terminal_id = '{$shop_terminal_id}'");
             if($query->num_rows() > 0) {
@@ -37,6 +48,7 @@
 
             return $ret;
         }
+
         function update_shop_terminal($id, $pin, $balance){
             $this->db->query( "UPDATE shop_terminal SET balance = '{$balance}', pin = '{$pin}' WHERE shop_terminal_id = '{$id}'");
         }
