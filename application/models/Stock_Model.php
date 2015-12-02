@@ -51,12 +51,23 @@
             return $ret;
         }
 
-        function get_stock($terminal_id,$item_id){
+        function get_stock($terminal_id, $item_id){
             $query = $this->db->query ("SELECT * FROM stock WHERE shop_terminal_id = '{$terminal_id}' AND item_id = '{$item_id}'");
             if($query->num_rows() > 0) {
                 $ret = $query->result();
             } else {
                 $ret = 'This item does not exist or is not stocked anywhere.';
+            }
+
+            return $ret;
+        }
+
+        function get_specific_stock($terminal_id, $item_id){
+            $query = $this->db->query ("SELECT quantity FROM stock WHERE shop_terminal_id = '{$terminal_id}' AND item_id = '{$item_id}'");
+            if($query->num_rows() > 0) {
+                $ret = $query->result();
+            } else {
+                $ret = 'This item does not exist or is not stocked in this terminal.';
             }
 
             return $ret;
