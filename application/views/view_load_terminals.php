@@ -26,6 +26,7 @@
         </thead>
         
         <?php
+        if( $load_terminals != '300' ){
           foreach( $load_terminals as $load_terminal ){
             echo "<tr>";
             echo "<td>".$load_terminal->load_terminal_id."</td>";
@@ -34,6 +35,12 @@
             echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='load_transactions/$load_terminal->load_terminal_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
             echo"</tr>";
           }
+        }else{
+            echo "<tr>";
+            echo "<td> No entries found. </td>";
+            echo"</tr>";
+          }
+          
 
           // ADD FORM
             echo "<form action=\"".site_url("site/load_terminals/1/")."\" method=\"post\"><tr>";

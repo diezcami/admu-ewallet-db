@@ -23,7 +23,8 @@
             if($query->num_rows() > 0) {
                 $ret = $query->result();
             } else {
-                $ret = 'This user does not exist or has no load transactions.';
+                $ret = null;
+                //$ret = 'This user does not exist or has no load transactions.';
             }
 
             return $ret;
@@ -34,7 +35,8 @@
             if($query->num_rows() > 0) {
                 $ret = $query->result();
             } else {
-                $ret = 'This terminal does not exist or has no load transactions.';
+                $ret = null;
+                //$ret = 'This user does not exist or has no load transactions.';
             }
 
             return $ret;

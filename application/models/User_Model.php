@@ -55,7 +55,8 @@
             if($query->num_rows() > 0) {
                 $ret = $query->result();
             } else {
-                $ret = 'A user with this ID number does not exist.';
+                $ret = null;
+                //$ret = 'A user with this ID number does not exist.';
             }
 
             return $ret;

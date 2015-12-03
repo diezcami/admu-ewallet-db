@@ -29,6 +29,8 @@
         
 
         <?php
+        if( $users != '300' ){
+          var_dump($users);
           foreach( $users as $user ){
             echo "<tr>";
             echo "<td>".$user->id_number."</td>";
@@ -38,6 +40,12 @@
             echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='".site_url("site/edit_user/$user->id_number")."'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
             echo"</tr>";
           }
+        }else{
+            echo "<tr>";
+            echo "<td> No entries found. </td>";
+            echo"</tr>";
+          }
+          
 
           // ADD FORM
             echo "<form action=\"".site_url("site/users/1/")."\" method=\"post\"><tr>";

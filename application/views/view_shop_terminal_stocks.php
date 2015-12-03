@@ -31,14 +31,21 @@
 
   
         <?php
-
-          foreach( $stocks as $stock ){
+          if( $stocks != null ){
+            foreach( $stocks as $stock ){
             echo "<tr>";
             echo "<td>".$stock->item_id."</td>";
             echo "<td>".$stock->quantity."</td>";
-           echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='".site_url("site/edit_shop_terminal_stock/".$shop_terminal_id."/".$stock->item_id)."'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
+            echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='".site_url("site/edit_shop_terminal_stock/".$shop_terminal_id."/".$stock->item_id)."'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
+            echo"</tr>";
+            }
+          }else{
+            echo "<tr>";
+            echo "<td> No entries found. </td>";
             echo"</tr>";
           }
+
+          
 
           // ADD FORM
             echo "<form action=\"".site_url("site/shop_terminal_stocks/".$shop_terminal_id."/1/")."\" method=\"post\"><tr>";

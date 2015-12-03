@@ -42,7 +42,7 @@
             if($query->num_rows() > 0) {
                 $ret = $query->result();
             } else {
-                $ret = '200';
+                $ret = '300';
             }
             return $ret;
         }

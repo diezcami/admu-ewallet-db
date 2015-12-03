@@ -21,14 +21,21 @@
 
   
         <?php
-
-          foreach( $load_transactions as $load_transaction ){
+          if( $load_transactions != null ){
+            var_dump($load_transactions);
+            foreach( $load_transactions as $load_transaction ){
+              echo "<tr>";
+              echo "<td>".$load_transaction->load_transaction_id."</td>";
+              echo "<td>".$load_transaction->amount_loaded."</td>";
+              echo "<td>".$load_transaction->id_number."</td>";
+              echo"</tr>";
+            }
+          }else{
             echo "<tr>";
-            echo "<td>".$load_transaction->load_transaction_id."</td>";
-            echo "<td>".$load_transaction->amount_loaded."</td>";
-            echo "<td>".$load_transaction->id_number."</td>";
+            echo "<td> No entries found. </td>";
             echo"</tr>";
           }
+          
         ?>
       </table>
     </div>

@@ -28,15 +28,23 @@
         </thead>
         
         <?php
-          foreach( $items as $item ){
+          if( $items != '300' ){
+            var_dump($items);
+            foreach( $items as $item ){
+              echo "<tr>";
+              echo "<td>".$item->item_id."</td>";
+              echo "<td>".$item->item_name."</td>";
+              echo "<td>".$item->item_price."</td>";
+              echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='".site_url("site/edit_item/".$item->item_id)."'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
+              echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='item_stocks/$item->item_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
+              echo"</tr>";
+            } 
+          }else{
             echo "<tr>";
-            echo "<td>".$item->item_id."</td>";
-            echo "<td>".$item->item_name."</td>";
-            echo "<td>".$item->item_price."</td>";
-            echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='".site_url("site/edit_item/".$item->item_id)."'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
-            echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='item_stocks/$item->item_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
+            echo "<td> No entries found. </td>";
             echo"</tr>";
-          } 
+          }
+          
 
           // ADD FORM
             echo "<form action=\"".site_url("site/items/1/")."\" method=\"post\"><tr>";

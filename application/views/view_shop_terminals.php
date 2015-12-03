@@ -29,16 +29,23 @@
         </thead>
         
         <?php
-          foreach( $shop_terminals as $shop_terminal ){
+          if( $shop_terminals != '300' ){
+            foreach( $shop_terminals as $shop_terminal ){
+              echo "<tr>";
+              echo "<td>".$shop_terminal->shop_terminal_id."</td>";
+              echo "<td>".$shop_terminal->balance."</td>";
+              echo "<td>".$shop_terminal->pin."</td>";
+              echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='edit_shop_terminal/$shop_terminal->shop_terminal_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
+              echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='buy_transactions/$shop_terminal->shop_terminal_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
+              echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='shop_terminal_stocks/$shop_terminal->shop_terminal_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";            
+              echo"</tr>";
+            }
+          }else{
             echo "<tr>";
-            echo "<td>".$shop_terminal->shop_terminal_id."</td>";
-            echo "<td>".$shop_terminal->balance."</td>";
-            echo "<td>".$shop_terminal->pin."</td>";
-            echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='edit_shop_terminal/$shop_terminal->shop_terminal_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
-            echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='buy_transactions/$shop_terminal->shop_terminal_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";
-            echo "<td class='details'><a class='btn btn-default btn-sm' type='button' href='shop_terminal_stocks/$shop_terminal->shop_terminal_id'><span class='glyphicon glyphicon-list-alt'></span></a></td>";            
+            echo "<td> No entries found. </td>";
             echo"</tr>";
           }
+          
 
           // ADD FORM
             echo "<form action=\"".site_url("site/shop_terminals/1/")."\" method=\"post\"><tr>";

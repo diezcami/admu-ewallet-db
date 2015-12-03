@@ -34,7 +34,7 @@
             if($query->num_rows() > 0) {
                 $ret = $query->result();
             } else {
-                $ret = 'This item does not exist or is not stocked anywhere.';
+                //$ret = 'This item does not exist or is not stocked anywhere.';
             }
 
             return $ret;
@@ -45,7 +45,8 @@
             if($query->num_rows() > 0) {
                 $ret = $query->result();
             } else {
-                $ret = 'This shop does not exist or has no stocks.';
+                $ret = null;
+                //$ret = 'This shop does not exist or has no stocks.';
             }
 
             return $ret;
@@ -56,7 +57,7 @@
             if($query->num_rows() > 0) {
                 $ret = $query->result();
             } else {
-                $ret = 'This item does not exist or is not stocked anywhere.';
+                //$ret = 'This item does not exist or is not stocked anywhere.';
             }
 
             return $ret;
@@ -67,7 +68,7 @@
             if($query->num_rows() > 0) {
                 $ret = $query->result();
             } else {
-                $ret = 'This item does not exist or is not stocked in this terminal.';
+                //$ret = 'This item does not exist or is not stocked in this terminal.';
             }
 
             return $ret;
