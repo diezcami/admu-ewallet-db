@@ -24,4 +24,12 @@ class Stock_Controller extends REST_Controller {
         }
         $this->response($temp, 404);
    }
+
+   function stock_post() {
+        $item_id = $this->post('item_id');
+        $shop_terminal_id = $this->post('shop_terminal_id');
+        $this->load->model('Stock_Model');
+        $data = $this->Stock_Model->get_specific_stock($shop_terminal_id, $item_id);
+        $this->response($data, 404);
+   }
 }
