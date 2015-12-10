@@ -19,7 +19,8 @@ class Site extends CI_Controller {
 		$this->nav = array( array('Users' , site_url('site/users') , 'view_users'),
 							array('Load Terminals', site_url('site/load_terminals'), 'view_load_terminals'),
 							array('Shop Terminals', site_url('site/shop_terminals'), 'view_shop_terminals'),
-							array('Items', site_url('site/items'), 'view_items')
+							array('Items', site_url('site/items'), 'view_items'),
+							array('Reports', site_url('site/selectreport'), 'view_select_report')
 			);
 		$this->load->vars(array('NavigationArray'=>$this->nav));
 	}
@@ -39,7 +40,13 @@ class Site extends CI_Controller {
 	}
 	public function welcome(){
 		$this->view();
-	} 
+	}
+
+	public function selectreport(){
+		$data['shop_terminals'] = $this->Shop_Terminal_Model->get_shop_terminals();
+		$data['load_terminals'] = $this->Load_Terminal_Model->get_load_terminals();
+		$this->view( $this->nav[4][2], $data);
+	}
 
 	public function users($update=0, $id=null){
 		if($update==1){
