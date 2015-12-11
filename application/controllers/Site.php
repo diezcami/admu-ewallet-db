@@ -20,7 +20,8 @@ class Site extends CI_Controller {
 							array('Load Terminals', site_url('site/load_terminals'), 'view_load_terminals'),
 							array('Shop Terminals', site_url('site/shop_terminals'), 'view_shop_terminals'),
 							array('Items', site_url('site/items'), 'view_items'),
-							array('Reports', site_url('site/selectreport'), 'view_select_report')
+							array('Shop Reports', site_url('site/selectshopreport'), 'view_select_shop_report'),
+							array('Load Reports', site_url('site/selectloadreport'), 'view_select_load_report')
 			);
 		$this->load->vars(array('NavigationArray'=>$this->nav));
 	}
@@ -40,12 +41,6 @@ class Site extends CI_Controller {
 	}
 	public function welcome(){
 		$this->view();
-	}
-
-	public function selectreport(){
-		$data['shop_terminals'] = $this->Shop_Terminal_Model->get_shop_terminals();
-		$data['load_terminals'] = $this->Load_Terminal_Model->get_load_terminals();
-		$this->view( $this->nav[4][2], $data);
 	}
 
 	public function users($update=0, $id=null){
@@ -96,6 +91,27 @@ class Site extends CI_Controller {
 		$this->view($this->nav[3][2], $data);
 	}
 
+
+	public function selectshopreport(){
+		$data['shop_terminals'] = $this->Shop_Terminal_Model->get_shop_terminals();
+		$this->view( $this->nav[4][2], $data);
+	}
+
+	public function selectloadreport(){
+		$data['load_terminals'] = $this->Load_Terminal_Model->get_load_terminals();
+		$this->view( $this->nav[5][2], $data);
+	}
+
+	public function shopreport(){
+		//var_dump($this->input->post("shop_terminal"));
+		$data['entries'] = $this->Buy_Transaction_Model->get_transactions($this->input->post("shop_terminal"), $this->input->post("month"));
+		//var_dump($data);
+		$this->view('view_shop_report', $data);
+	}
+
+	public function loadreport(){
+		//$data['entries'] = $this->Loa
+	}
 	/*
 		EDIT FUNCTIONS
 	 */
