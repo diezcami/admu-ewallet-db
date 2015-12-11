@@ -33,7 +33,7 @@
             if($query->num_rows() > 0) {
                 $ret = $query->result();
             } else {
-                $ret = 'This terminal does not exist or has no buy transactions.';
+                $ret = null;
             }
 
             return $ret;

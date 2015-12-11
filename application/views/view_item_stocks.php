@@ -32,6 +32,8 @@
   
         <?php
           //var_dump($stocks);
+        if( $stocks != null ){
+        //var_dump($stocks);
           foreach( $stocks as $stock ){
             echo "<tr>";
             echo "<td>".$stock->shop_terminal_id."</td>";
@@ -40,6 +42,12 @@
             // href: edit_stock/$item->item_id/
             echo"</tr>";
           }
+        }else{
+            echo "<tr>";
+            echo "<td> No entries found. </td>";
+            echo"</tr>";
+          }
+          
 
           // ADD FORM
             echo "<form action=\"".site_url("site/item_stocks/".$item_id."/1/")."\" method=\"post\"><tr>";

@@ -34,7 +34,7 @@
             if($query->num_rows() > 0) {
                 $ret = $query->result();
             } else {
-                //$ret = 'This item does not exist or is not stocked anywhere.';
+                $ret = null;
             }
 
             return $ret;

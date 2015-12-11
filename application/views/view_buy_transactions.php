@@ -23,7 +23,7 @@
 
   
         <?php
-
+        if( $buy_transactions != null ){
           foreach( $buy_transactions as $buy_transaction ){
             echo "<tr>";
             echo "<td>".$buy_transaction->buy_transaction_id."</td>";
@@ -31,6 +31,12 @@
             echo "<td>".$buy_transaction->id_number."</td>";
             echo"</tr>";
           }
+        }else{
+            echo "<tr>";
+            echo "<td> No entries found. </td>";
+            echo"</tr>";
+          }
+          
         ?>
       </table>
     </div>
