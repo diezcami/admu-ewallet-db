@@ -39,14 +39,20 @@
             return $ret;
         }
 
-        function get_transactions( $shop_terminal, $month, $day=0 ){
+        function get_transactions( $shop_terminal, $month, $day ){
             //$query = $this->db->query("SELECT * FROM buy_transaction WHERE SELECT item.item_name, item.item_price, item_order.quantity, item_order.quantity * item.item_price FROM `item`INNER JOIN item_order ON item.item_id = item_order.item_id INNER JOIN buy_transaction ON item_order.buy_transaction_id = buy_transaction.buy_transaction_idWHERE shop_terminal_id = '{$shop_terminal}' AND buy_transaction_ts LIKE '2015-{$month}%' ");
+
             $this->db->select('item_name, item_price, quantity');
             $this->db->from('item a');
             $this->db->join('item_order b', 'a.item_id=b.item_id', 'inner');
             $this->db->join('buy_transaction c','b.buy_transaction_id = c.buy_transaction_id','inner');
             $this->db->where( 'shop_terminal_id', $shop_terminal);
-            $this->db->like( 'buy_transaction_ts', '2015-'.$month, 'after' );
+            if( $day =='-' ){
+                $this->db->like( 'buy_transaction_ts', '2015-'.$month, 'after' );
+            }else{
+                $this->db->like( 'buy_transaction_ts', '2015-'.$month.'-'.$day, 'after' );
+            }
+            
             $query = $this->db->get();
             if($query->num_rows() >= 0) {
                 $ret = $query->result_array();

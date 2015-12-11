@@ -4,6 +4,7 @@
   <div class="row">
     <div class="panel panel-default">
       <!-- Default panel contents -->
+      <div class="panel-heading"><h4>Generate Monthly/Daily Report1</h4></div>
       <table class="table">
         <thead>
           <tr>

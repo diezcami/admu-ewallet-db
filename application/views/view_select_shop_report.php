@@ -3,6 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="panel panel-default">
+      <div class="panel-heading"><h4>Generate Monthly/Daily Report</h4></div>
       <!-- Default panel contents -->
       <?php echo "<form action=\"".site_url("site/shopreport/")."\" method=\"post\">"; ?>
       <select name="shop_terminal">
@@ -25,8 +26,9 @@
         <select name="day">
             <?php
               //$months= array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
-              //echo "<option value=\"none\"> none </option>";
-              for($j = 0; $j <= 31; $j++ ){
+              echo "<option value=\"-\"> - </option>";
+              
+              for($j = 1; $j <= 31; $j++ ){
                 echo "<option value=".$j.">".$j."</option>";
               }
             ?>

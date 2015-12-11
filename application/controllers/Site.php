@@ -20,8 +20,7 @@ class Site extends CI_Controller {
 							array('Load Terminals', site_url('site/load_terminals'), 'view_load_terminals'),
 							array('Shop Terminals', site_url('site/shop_terminals'), 'view_shop_terminals'),
 							array('Items', site_url('site/items'), 'view_items'),
-							array('Shop Reports', site_url('site/selectshopreport'), 'view_select_shop_report'),
-							array('Load Reports', site_url('site/selectloadreport'), 'view_select_load_report')
+							array('Generate Reports', site_url('site/selectshopreport'), 'view_select_shop_report'),
 			);
 		$this->load->vars(array('NavigationArray'=>$this->nav));
 	}
@@ -104,7 +103,7 @@ class Site extends CI_Controller {
 
 	public function shopreport(){
 		//var_dump($this->input->post("shop_terminal"));
-		$data['entries'] = $this->Buy_Transaction_Model->get_transactions($this->input->post("shop_terminal"), $this->input->post("month"));
+		$data['entries'] = $this->Buy_Transaction_Model->get_transactions($this->input->post("shop_terminal"), $this->input->post("month"), $this->input->post("day"));
 		//var_dump($data);
 		$this->view('view_shop_report', $data);
 	}

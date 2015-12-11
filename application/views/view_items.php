@@ -29,7 +29,7 @@
         
         <?php
           if( $items != '300' ){
-            var_dump($items);
+            //var_dump($items);
             foreach( $items as $item ){
               echo "<tr>";
               echo "<td>".$item->item_id."</td>";

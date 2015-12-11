@@ -22,7 +22,7 @@
   
         <?php
           if( $load_transactions != null ){
-            var_dump($load_transactions);
+            //var_dump($load_transactions);
             foreach( $load_transactions as $load_transaction ){
               echo "<tr>";
               echo "<td>".$load_transaction->load_transaction_id."</td>";

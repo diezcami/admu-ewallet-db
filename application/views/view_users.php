@@ -30,7 +30,7 @@
 
         <?php
         if( $users != '300' ){
-          var_dump($users);
+          //var_dump($users);
           foreach( $users as $user ){
             echo "<tr>";
             echo "<td>".$user->id_number."</td>";
